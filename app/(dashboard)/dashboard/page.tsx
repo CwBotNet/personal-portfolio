@@ -1,19 +1,19 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Sidebar from "@/components/sidebar";
+import UserProfile from "@/components/dashboard/user";
 
 const dashboard = () => {
   const [data, setData] = useState(false);
   return (
-    <div className="flex justify-between flex-row-reverse">
-      <div className="ml-auto mr-auto">
+    <div className="">
+      <div className="">
         <div>
           <h1 className="text-2xl">Dashboard</h1>
         </div>
+        <UserProfile />
       </div>
-      <div id="sidebar">
-        <Sidebar />
-      </div>
+      <div id="sidebar">{/* <Sidebar /> */}</div>
     </div>
   );
 };
