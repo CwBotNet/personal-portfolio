@@ -14,7 +14,7 @@ import { date } from "@/lib/utils";
 
 const ProjectsTable = () => {
   return (
-    <div className="mt-20">
+    <div className="">
       <Table>
         <TableCaption>List of projects</TableCaption>
         <TableHeader>

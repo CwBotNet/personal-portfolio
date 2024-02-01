@@ -12,14 +12,14 @@ import Image from "next/image";
 
 const UserProfile = () => {
   return (
-    <div className="mt-20">
+    <div className="">
       <Card className="w-[400px] rounded-xl  border-none">
         <CardHeader>
           <CardTitle className="text-center">
             <h1>profile</h1>
           </CardTitle>
         </CardHeader>
-        <CardContent className="pt-6">
+        <CardContent className="pt-4 flex justify-center">
           <div id="profile" className="flex justify-start gap-12">
             <div className="mt-auto mb-auto">
               <Image
@@ -37,7 +37,7 @@ const UserProfile = () => {
             </div>
           </div>
         </CardContent>
-        <CardFooter>Created At: {date} </CardFooter>
+        <CardFooter className="flex justify-end text-xs">Created At: {date} </CardFooter>
       </Card>
     </div>
   );
