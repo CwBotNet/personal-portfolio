@@ -1,10 +1,9 @@
-import { User } from "../../models/user.model";
-import { ApiError } from "../../utils/ApiError";
-import { ApiResponse } from "../../utils/ApiResponse";
+import { User } from "../../../models/user.model";
+import { ApiError } from "../../../utils/ApiError";
+import { ApiResponse } from "../../../utils/ApiResponse";
 import { NextResponse } from "next/server";
 
 import { Connect } from "@/lib/db/DbConnection";
-import { NextApiRequest, NextApiResponse } from "next";
 
 // Create
 export const POST = async (req: Request, res: Response) => {
