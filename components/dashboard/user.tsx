@@ -1,3 +1,4 @@
+"use client"
 import { date } from "@/lib/utils";
 import {
   Card,
@@ -10,7 +11,21 @@ import {
 
 import Image from "next/image";
 
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const UserProfile = () => {
+
+  const [isdata, isSetData] = useState([]);
+
+  const getUserDetails = async () => {
+    const res = await fetch('http://localhost:3000/api/users')
+    // console.log(res);
+    // isSetData()
+  }
+
+  getUserDetails()
+  // console.log(isdata);
   return (
     <div className="">
       <Card className="w-[400px] rounded-xl  border-none">

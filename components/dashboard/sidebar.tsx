@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "../ui/button";
 import {
   BookUser,
@@ -35,6 +36,8 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import Image from "next/image";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 const Sidebar = () => {
   const navigation = [
     {
@@ -83,13 +86,25 @@ const Sidebar = () => {
       ),
     },
     {
-      href: "#",
+      // href: "#",
       name: "Logout",
       icon: (
-        <LogOut size={18} />
+        <LogOut onClick={() => { logout() }} size={18} />
       ),
     },
   ];
+
+  const router = useRouter()
+  // logout function
+  const logout = async () => {
+    try {
+      const responce = await axios.get("/api/auth/logout");
+      console.log("logout success", responce.data);
+      router.push("/login")
+    } catch (error: any) {
+      console.log("unable to logout", error?.message);
+    }
+  };
 
   return (
     <>
