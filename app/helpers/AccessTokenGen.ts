@@ -20,3 +20,5 @@ const generateAccessAndRefreshToken = async (userId: string) => {
     );
   }
 };
+
+export { generateAccessAndRefreshToken };

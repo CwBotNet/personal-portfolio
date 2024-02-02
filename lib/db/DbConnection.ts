@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import DB_NAME from "../../app/api/constants/database";
+import DB_NAME from "../../app/constants/database";
 
 // DB connection
 
