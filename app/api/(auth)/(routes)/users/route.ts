@@ -6,8 +6,8 @@ import { NextResponse } from "next/server";
 import { Connect } from "@/lib/db/DbConnection";
 
 // Create
+Connect();
 export const POST = async (req: Request, res: Response) => {
-  await Connect();
   try {
     // get json data from client
     const { name, email, password } = await req.json();
@@ -39,7 +39,6 @@ export const POST = async (req: Request, res: Response) => {
 
 // Read
 export const GET = async (req: Request, res: Response) => {
-  await Connect();
   try {
     const user = await User.find().select("-password");
     // find check
