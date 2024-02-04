@@ -6,6 +6,7 @@ import { verifyJwt } from "@/app/helpers/verifyToken";
 
 import { Connect } from "@/lib/db/DbConnection";
 import { isValidObjectId } from "mongoose";
+import { useRouter } from "next/navigation";
 
 // Create
 Connect();
@@ -25,16 +26,47 @@ export const GET = async (request: NextRequest) => {
       { status: 200 }
     );
   } catch (error) {
-    throw new ApiError(500, `serverError : ${error}`);
+    throw new ApiError(500, `serverError while fetching the user: ${error}`);
   }
 };
 
 // update
-export const PATCH = async (req: Request, res: Response) => {
-  return NextResponse.json(new ApiResponse(200, "ok"), { status: 200 });
+export const PATCH = async (request: NextRequest) => {
+  const { name, email } = await request.json();
+
+  try {
+    // user check
+    const user = await verifyJwt(request);
+
+    if (!user) {
+      useRouter().push("/login");
+      throw new ApiError(403, "unauthorized operation");
+    }
+
+    // update user
+    const updateUserDetails = await User.findByIdAndUpdate(user._id, {
+      name,
+      email,
+    });
+
+    if (!updateUserDetails) throw new ApiError(402, "Db server Errors");
+
+    const updatedUser = await User.findById(user._id).select(
+      "-password -refreshToken"
+    );
+    return NextResponse.json(
+      new ApiResponse(200, updatedUser, "user updated"),
+      { status: 200 }
+    );
+  } catch (error: any) {
+    throw new ApiError(
+      500,
+      `Server Error while updating the user: ${error?.message}`
+    );
+  }
 };
 
 // Delete
-export const DELETE = async (req: Request, res: Response) => {
+export const DELETE = async (request: NextRequest) => {
   return NextResponse.json(new ApiResponse(200, "ok"), { status: 200 });
 };

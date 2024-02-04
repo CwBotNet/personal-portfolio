@@ -5,7 +5,8 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
-  const isPublicPath = path === "/login" || path === "/register";
+  const isPublicPath =
+    path === "/login" || path === "/register" || path === "/";
   const token = request.cookies.get("AccessToken")?.value || "";
   // console.log(token);
 
@@ -22,3 +23,17 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: ["/", "/login", "/register", "/dashboard", "/dashboard/:path*"],
 };
+
+// multer middleware
+import multer from "multer";
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/temp");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+export const upload = multer({ storage: storage });
