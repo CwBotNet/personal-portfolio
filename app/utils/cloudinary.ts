@@ -8,22 +8,38 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const uploadOnCloudinary = async (localFilePath: string) => {
+const uploadOnCloudinary = async (localFilePath: File, folder: string) => {
+  const buffer = await localFilePath.arrayBuffer();
+  const bytes = Buffer.from(buffer);
   try {
     if (!localFilePath) {
       throw new ApiError(401, "Local file path is missing");
     }
+
     // upload the file on cloudinary
-    const response = await cloudinary.uploader.upload(localFilePath, {
-      resource_type: "image",
+    return new Promise(async (resolve, reject) => {
+      await cloudinary.uploader
+        .upload_stream(
+          {
+            resource_type: "auto",
+            folder: folder,
+          },
+          async (err, result) => {
+            if (err) {
+              reject(err.message);
+            }
+            resolve(result);
+          }
+        )
+        .end(bytes);
     });
 
     // file has been uploaded
-    console.log(`file is uploaded on cloudinary ${response.url}`);
-    fs.unlinkSync(localFilePath);
-    return response;
+    // console.log(`file is uploaded on cloudinary ${response.url}`);
+    // fs.unlinkSync(localFilePath);
+    // return response;
   } catch (error) {
-    fs.unlinkSync(localFilePath); // remove file locally saved temporary file as the upload operation got failed
+    // fs.unlinkSync(localFilePath); // remove file locally saved temporary file as the upload operation got failed
     return null;
   }
 };
