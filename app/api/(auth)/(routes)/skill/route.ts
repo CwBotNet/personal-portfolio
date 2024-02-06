@@ -39,5 +39,7 @@ export const GET = async (request: NextRequest) => {
     status: 200,
   });
 };
+
+
 export const PATCH = async (request: NextRequest) => {};
 export const DELETE = async (request: NextRequest) => {};

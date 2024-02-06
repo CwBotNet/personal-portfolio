@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { date } from "@/lib/utils";
 import {
   Card,
@@ -10,22 +10,20 @@ import {
 } from "../ui/card";
 
 import Image from "next/image";
-
-import axios from "axios";
 import { useEffect, useState } from "react";
+import httpModule from "@/app/helpers/httpModule";
 
 const UserProfile = () => {
+  const [data, setData] = useState({ name: "", email: "" });
 
-  const [isdata, isSetData] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const response: any = await httpModule.get("/users");
+      // console.log(typeof response.data.data);
+      setData(response.data.data);
+    })();
+  }, []);
 
-  const getUserDetails = async () => {
-    const res = await fetch('http://localhost:3000/api/users')
-    // console.log(res);
-    // isSetData()
-  }
-
-  getUserDetails()
-  // console.log(isdata);
   return (
     <div className="">
       <Card className="w-[400px] rounded-xl  border-none">
@@ -46,13 +44,15 @@ const UserProfile = () => {
               />
             </div>
             <div>
-              <h1>name : john doe</h1>
-              <h1>Email : xyz@mail.com </h1>
-              <h1>Role : full stack dev</h1>
+              <h1>name : {data.name}</h1>
+              <h1>Email : {data.email} </h1>
+              <h1>Role : admin</h1>
             </div>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-end text-xs">Created At: {date} </CardFooter>
+        <CardFooter className="flex justify-end text-xs">
+          Created At: {date}{" "}
+        </CardFooter>
       </Card>
     </div>
   );

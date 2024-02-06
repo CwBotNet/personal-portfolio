@@ -4,11 +4,16 @@ interface IBio {
   bio: String;
 }
 
-const BioSchema = new Schema<IBio>({
-  bio: {
-    type: String,
-    required: true,
+const BioSchema = new Schema<IBio>(
+  {
+    bio: {
+      type: String,
+      required: true,
+      unique: true,
+    },
   },
-});
+  { timestamps: true }
+);
 
-export const Bio = mongoose.model<IBio>("Bio", BioSchema);
+export const Bio =
+  mongoose.models.Bio || mongoose.model<IBio>("Bio", BioSchema);

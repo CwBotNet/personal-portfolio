@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-interface ITestimonial {
+export interface ITestimonial {
   name: string;
   avatarImage: string;
   description: string;
@@ -23,7 +23,6 @@ const TestimonialSchema = new Schema<ITestimonial>(
   { timestamps: true }
 );
 
-export const Testimonial = mongoose.model<ITestimonial>(
-  "Testimonial",
-  TestimonialSchema
-);
+export const Testimonial =
+  mongoose.models.Testimonial ||
+  mongoose.model<ITestimonial>("Testimonial", TestimonialSchema);
