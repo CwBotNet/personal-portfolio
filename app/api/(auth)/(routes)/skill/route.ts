@@ -33,6 +33,11 @@ export const POST = async (request: NextRequest) => {
     throw new ApiError(500, `server Error: ${error?.message}`);
   }
 };
-export const Get = async (request: NextRequest) => {};
+export const GET = async (request: NextRequest) => {
+  const skill = await Skill.find();
+  return NextResponse.json(new ApiResponse(200, skill, "skills fetched"), {
+    status: 200,
+  });
+};
 export const PATCH = async (request: NextRequest) => {};
 export const DELETE = async (request: NextRequest) => {};

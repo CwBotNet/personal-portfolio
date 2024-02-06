@@ -13,4 +13,5 @@ const SkillSchema = new Schema<ISkill>(
   { timestamps: true }
 );
 
-export const Skill = mongoose.model<ISkill>("Skill", SkillSchema);
+export const Skill =
+  mongoose.models.Skill || mongoose.model<ISkill>("Skill", SkillSchema);
