@@ -1,10 +1,11 @@
 
 import Sidebar from "@/components/dashboard/sidebar";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 // import "./globals.css";
 
-// const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -16,12 +17,16 @@ export default function DashboardLyaout({
   children: React.ReactNode;
 }) {
   return (
-    <main>
-      <div className="flex justify-between">
+    <html lang="en">
+      <body className={cn(
+        "min-h-screen w-full flex",
+        inter.className,
+        { 'debug-screen': process.env.NODE_ENV === 'development' }
+      )}>
         <Sidebar />
-        <div className="ml-auto mr-auto">{children}</div>
-      </div>
-    </main >
+        {children}
+      </body>
+    </html>
 
   );
 }
