@@ -27,7 +27,7 @@ const ProjectsTable = () => {
         );
         setData(response.data.data);
         // console.log(response.data.data[0]._id);
-      } catch (error) {}
+      } catch (error) { }
     })();
   }, []);
   return (
@@ -45,18 +45,18 @@ const ProjectsTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((data: any) => (
-            <TableRow>
-              <TableCell key={data._id}>{data.title}</TableCell>
-              <TableCell key={data._id}>{data.techStack}</TableCell>
-              <TableCell key={data._id}>
+          {data.map((data: any, idx) => (
+            <TableRow key={idx}>
+              <TableCell >{data.title}</TableCell>
+              <TableCell >{data.techStack}</TableCell>
+              <TableCell >
                 <Link href={`${data.livePreview}`}>live preview</Link>
               </TableCell>
-              <TableCell key={data._id}>
+              <TableCell >
                 <Link href={`${data.sorceCode}`}>code link</Link>
               </TableCell>
-              <TableCell key={data._id}>{data.createdAt}</TableCell>
-              <TableCell key={data._id}>{data.updatedAt}</TableCell>
+              <TableCell >{data.createdAt}</TableCell>
+              <TableCell >{data.updatedAt}</TableCell>
             </TableRow>
           ))}
         </TableBody>
