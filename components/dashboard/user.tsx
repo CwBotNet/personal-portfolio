@@ -42,9 +42,9 @@ const UserProfile = (user: UserDetails) => {
         <CardContent className="pt-4 flex justify-center">
           <div id="profile" className="flex justify-start gap-12">
             <div>
-              <h1 className="capitalize text-xl"><span className="">name:</span> {user.name}</h1>
-              <h1 className="text-xl"><span className="capitalize">email:</span> {user.email}</h1>
-              <h1 className="capitalize text-xl text-green-400"><span className="text-white">Role:</span> {user.role}</h1>
+              <h1 className="capitalize text-xs"><span className="">name:</span> {user.name}</h1>
+              <h1 className="text-xs"><span className="capitalize">email:</span> {user.email}</h1>
+              <h1 className="capitalize text-xs text-green-400"><span className="text-white">Role:</span> {user.role}</h1>
             </div>
           </div>
         </CardContent>
