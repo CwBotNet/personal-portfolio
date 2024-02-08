@@ -13,7 +13,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import httpModule from "@/app/helpers/httpModule";
 
-const UserProfile = () => {
+
+export interface UserDetails {
+  name: string;
+  email: string;
+  role?: string;
+  createdAt: string;
+}
+const UserProfile = (user: UserDetails) => {
   const [data, setData] = useState({ name: "", email: "" });
 
   useEffect(() => {
@@ -25,33 +32,24 @@ const UserProfile = () => {
   }, []);
 
   return (
-    <div className=" ">
-      <Card className="w-[20vw] rounded-xl  border-none">
+    <div className="">
+      <Card className="w-[32vw] rounded-2xl border-white/20 bg-gray-800/45">
         <CardHeader>
-          <CardTitle className="text-center">
-            <h1>profile</h1>
+          <CardTitle>
+
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-4 flex justify-center">
           <div id="profile" className="flex justify-start gap-12">
-            <div className="mt-auto mb-auto">
-              <Image
-                width={56}
-                height={56}
-                className="rounded-full"
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="user Profile image"
-              />
-            </div>
             <div>
-              <h1><span className="">name:</span> {data.name}</h1>
-              <h1><span className="">email:</span> {data.email}</h1>
-              <h1><span className="">Role:</span> admin</h1>
+              <h1 className="capitalize text-xl"><span className="">name:</span> {user.name}</h1>
+              <h1 className="text-xl"><span className="capitalize">email:</span> {user.email}</h1>
+              <h1 className="capitalize text-xl text-green-400"><span className="text-white">Role:</span> {user.role}</h1>
             </div>
           </div>
         </CardContent>
         <CardFooter className="flex justify-end text-xs">
-          Created At: {date}{" "}
+          Created At: {user.createdAt}
         </CardFooter>
       </Card>
     </div>

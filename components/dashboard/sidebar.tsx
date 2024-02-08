@@ -69,7 +69,7 @@ export default function SideNavbar({ }: Props) {
   }
 
   return (
-    <div className="relative min-w-[80px] border-r border-white/20 px-3  pb-10 pt-4 bg-gray-800/45">
+    <div className="relative min-w-[80px] border-r border-white/20 px-3  pb-10 pt-4 bg-gray-800/45 z-10">
       {!mobileWidth && (
         <div className="absolute right-[-20px] top-7">
           <Button
