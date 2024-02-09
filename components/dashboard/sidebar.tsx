@@ -1,7 +1,15 @@
-/** @format */
 "use client";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
-import { useState } from "react";
 import { Nav } from "../ui/nav";
 
 type Props = {};
@@ -14,80 +22,97 @@ import {
   ChevronRight,
   FolderKanban,
   StickyNote,
-  LogOut
+  LogOut,
+  AlignLeft,
+  LogOutIcon,
+  SunMoon,
 } from "lucide-react";
 import { Button } from "../ui/button";
 
 import { useWindowWidth } from "@react-hook/window-size";
-import ProfileDropdown from "../ui/profileDropdown";
 
 const navLinks = [
-
   {
     title: "Dashboard",
     href: "/",
     icon: LayoutDashboard,
-    variant: "default"
+    variant: "default",
   },
   {
     title: "Profile",
     href: "/dashboard/profile",
     icon: UsersRound,
-    variant: "ghost"
+    variant: "ghost",
   },
   {
     title: "Project",
     href: "/dashboard/projects",
     icon: FolderKanban,
-    variant: "ghost"
+    variant: "ghost",
   },
   {
     title: "Testimonial",
     href: "/dashboard/testimonials",
     icon: StickyNote,
-    variant: "ghost"
-  }
-]
+    variant: "ghost",
+  },
+];
 
 const footerLink = [
   {
-    title: "logout",
+    title: "Mode",
     href: "/dashboard/testimonials",
-    icon: LogOut,
-    variant: "ghost"
-  }
+    icon: SunMoon,
+    variant: "ghost",
+  },
+];
 
-]
-export default function SideNavbar({ }: Props) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-
+export default function SideNavbar({}: Props) {
   const onlyWidth = useWindowWidth();
-  const mobileWidth = onlyWidth < 768;
-
-  function toggleSidebar() {
-    setIsCollapsed(!isCollapsed);
-  }
-
+  const mobileWidth = onlyWidth < 786;
   return (
-    <div className="relative min-w-[80px] border-r border-white/20 px-3  pb-10 pt-4 bg-gray-800/45 z-10">
-      {!mobileWidth && (
-        <div className="absolute right-[-20px] top-7">
-          <Button
-            onClick={toggleSidebar}
-            variant="secondary"
-            className="rounded-full p-2 bg-slate-600"
-
-          >
-            <ChevronRight className="" />
-          </Button>
+    <>
+      {!mobileWidth ? (
+        <div className=" min-w-[15vw] border-r border-white/20 px-3  pb-10 pt-4 bg-gray-800/45 z-10">
+          <div className="fixed left-0 top-0 h-full">
+            <Nav
+              FooterLink={footerLink as []}
+              links={navLinks as []}
+              isCollapsed={mobileWidth ? true : false}
+            />
+          </div>
         </div>
+      ) : (
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="secondary">
+              <AlignLeft />
+            </Button>
+          </SheetTrigger>
+          <SheetContent
+            side={"left"}
+            className="bg-gray-800  w-[12rem]  border-none"
+          >
+            <div className="flex h-full flex-col">
+              <Nav
+                FooterLink={footerLink as []}
+                links={navLinks as []}
+                isCollapsed={mobileWidth ? true : false}
+              />
+              <SheetFooter>
+                <SheetClose asChild>
+                  <Button type="submit" className="ml-auto mr-auto flex gap-2 ">
+                    <span>
+                      <LogOutIcon size={18} className="text-red-500" />
+                    </span>
+                    <p> exit</p>
+                  </Button>
+                </SheetClose>
+              </SheetFooter>
+            </div>
+          </SheetContent>
+        </Sheet>
       )}
-      <ProfileDropdown />
-      <Nav
-        isCollapsed={mobileWidth ? true : isCollapsed}
-        links={navLinks as []}
-        FooterLink={footerLink as []}
-      />
-    </div>
+    </>
   );
 }
