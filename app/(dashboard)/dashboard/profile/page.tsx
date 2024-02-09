@@ -1,3 +1,4 @@
+import AddSkill from "@/components/dashboard/AddSkill";
 import Bio from "@/components/dashboard/bio";
 import ProjectsTable from "@/components/dashboard/projectsTable";
 import Skill from "@/components/dashboard/skill";
@@ -73,10 +74,10 @@ const profilePage = () => {
             </div>
           </div>
         </div>
-        <div className="p-8 w-full flex container ">
+        <div className="p-8 w-full justify-center flex flex-wrap-reverse md:flex-nowrap gap-4 ">
           {/* user details */}
 
-          <div className=" w-full bg-gray-800/45 rounded-xl">
+          <div className=" w-[50vw] bg-gray-800/45 rounded-xl">
             <Card className="border-none">
               <CardHeader>
                 <CardTitle className="text-center">Skills</CardTitle>
@@ -139,6 +140,16 @@ const profilePage = () => {
                   createdAt={date}
                   role="admin"
                 /> */}
+              </CardContent>
+            </Card>
+          </div>
+          <div className=" w-[30vw] rounded-xl  p-4 ">
+            <Card className="border-none">
+              <CardHeader>
+                <CardTitle>Add skills</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <AddSkill />
               </CardContent>
             </Card>
           </div>
