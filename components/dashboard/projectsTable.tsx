@@ -1,5 +1,3 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -16,20 +14,21 @@ import axios from "axios";
 import Link from "next/link";
 import httpModule from "@/app/helpers/httpModule";
 
-let data;
-const ProjectsTable = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    (async () => {
-      try {
-        const response: any = await httpModule.get(
-          "/project"
-        );
-        setData(response.data.data);
-        // console.log(response.data.data[0]._id);
-      } catch (error) { }
-    })();
-  }, []);
+// let data;
+
+export interface IProject {
+  title: string;
+  techStack: string;
+  sorceCode: string;
+  livePreview: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+const ProjectsTable = async () => {
+
+  const res = await httpModule.get("/project");
+  const data: IProject[] = await res.data.data;
+
   return (
     <div className="">
       <Table>
@@ -45,7 +44,7 @@ const ProjectsTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((data: any, idx) => (
+          {data.map((data, idx) => (
             <TableRow key={idx}>
               <TableCell >{data.title}</TableCell>
               <TableCell >{data.techStack}</TableCell>

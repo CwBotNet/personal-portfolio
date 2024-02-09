@@ -20,17 +20,9 @@ export interface UserDetails {
   role?: string;
   createdAt: string;
 }
-const UserProfile = (user: UserDetails) => {
-  const [data, setData] = useState({ name: "", email: "" });
-
-  useEffect(() => {
-    (async () => {
-      const response: any = await httpModule.get("/users");
-      // console.log(typeof response.data.data);
-      setData(response.data.data);
-    })();
-  }, []);
-
+const UserProfile = async () => {
+  const res = await httpModule.get("/users");
+  const user = await res.data.data;
   return (
     <div className="">
       <Card className="w-[32vw] rounded-2xl border-white/20 bg-gray-800/45">

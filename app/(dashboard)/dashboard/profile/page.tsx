@@ -1,3 +1,5 @@
+"use client"
+import httpModule from "@/app/helpers/httpModule";
 import AddSkill from "@/components/dashboard/AddSkill";
 import Bio from "@/components/dashboard/bio";
 import ProjectsTable from "@/components/dashboard/projectsTable";
@@ -21,63 +23,42 @@ import {
   TableHead,
   TableRow,
 } from "@/components/ui/table";
-import { date } from "@/lib/utils";
 import { AtSign, MapPin, Laptop2 } from "lucide-react";
 import Image from "next/image";
 
-import React from "react";
 
 const profilePage = () => {
+
   return (
     <>
-      <div className="w-screen relative ">
+      <div className="w-screen  ">
         <div id="banner" className=" h-[22vh]  bg-black/40 flex"></div>
-        <div className="bg-gray-800/45 h-[34vh] rounded-bl-xl rounded-br-xl ">
-          <div
-            id="avatar"
-            className="absolute border-[0.2rem] rounded-full left-14 top-[15%] "
-          >
-            <Image
-              width={124}
-              height={124}
-              className="rounded-full"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="avatar"
-            />
-          </div>
-          <div className="p-12 w-8/12 tracking-wider absolute top-[14rem] ">
-            <div id="profile" className="flex gap-2">
-              <h1 className="text-2xl capitalize leading-12">raj sahani</h1>
-              <div className="mt-auto mb-auto bg-[#2fbf71ff]/80 rounded-xl w-12 h-4 text-center ">
-                <h3 className="text-xs capitalize">admin</h3>
-              </div>
+        <div className="bg-gray-800/45 h-[240px] rounded-bl-xl rounded-br-xl">
+          <div id="profileCard" className=" flex p-12">
+            <div className="mt-4">
+              <Image src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="avatar" width={100} height={100} className=" rounded-full border-[2.5px]" />
             </div>
-            <div>
-              <h3 className="text-sm capitalize leading-8">john@mail.com</h3>
-            </div>
-            <div className="flex gap-4 pt-2  ">
-              <p className="text-xs flex gap-1">
-                <MapPin size={12} className="text-red-600 mt-auto mb-auto" />
-                Delhi, India
-              </p>
-              <p className="text-xs flex">
-                <AtSign size={12} className="mt-auto mb-auto" />
-                Botnet
-              </p>
-              <p className="text-xs capitalize flex gap-1">
-                <Laptop2
-                  size={12}
-                  className="text-orange-400 mt-auto mb-auto"
-                />
-                full stack dev
-              </p>
-            </div>
+            <Card className="border-none">
+              <CardHeader>
+                <CardTitle className="capitalize">
+                  Raj sahani
+                </CardTitle>
+                <CardDescription>
+                  <p>jonh@mail.com</p>
+                </CardDescription>
+              </CardHeader>
+              <CardContent className=" flex gap-2 flex-wrap capitalize text-[0.6rem] md:text-[0.8rem]">
+                <p className="flex gap-2"><AtSign size={12} className="mt-auto mb-auto " />botnet</p>
+                <p className="flex gap-2"><MapPin size={12} className="mt-auto mb-auto text-red-400" />delhi, India</p>
+                <p className="flex gap-2"><Laptop2 size={12} className="mt-auto mb-auto text-orange-400" />full stack Developer</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
-        <div className="p-8 w-full justify-center flex flex-wrap-reverse md:flex-nowrap gap-4 ">
+        <div className="p-8 w-[80vw] ml-auto mr-auto flex flex-wrap-reverse md:flex-nowrap gap-4 ">
           {/* user details */}
 
-          <div className=" w-[50vw] bg-gray-800/45 rounded-xl">
+          <div className=" w-[80vw] bg-gray-800/45 rounded-xl container">
             <Card className="border-none">
               <CardHeader>
                 <CardTitle className="text-center">Skills</CardTitle>
@@ -98,7 +79,7 @@ const profilePage = () => {
                     </TableRow>
                   </TableHeader>
 
-                  <TableBody>
+                  <TableBody className="">
                     <TableRow className="border-none">
                       <TableCell className="text-center capitalize">
                         js
@@ -143,7 +124,7 @@ const profilePage = () => {
               </CardContent>
             </Card>
           </div>
-          <div className=" w-[30vw] rounded-xl  p-4 ">
+          <div className=" w-[80vw] rounded-xl  p-4 ">
             <Card className="border-none">
               <CardHeader>
                 <CardTitle>Add skills</CardTitle>
@@ -155,7 +136,7 @@ const profilePage = () => {
           </div>
           {/* <ProjectsTable /> */}
         </div>
-      </div>
+      </div >
     </>
   );
 };

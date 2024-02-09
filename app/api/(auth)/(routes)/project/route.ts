@@ -61,12 +61,6 @@ export const POST = async (request: NextRequest) => {
 // read
 export const GET = async (request: NextRequest) => {
   try {
-    // user check
-    if (!verifyJwt(request)) {
-      useRouter().push("/login");
-      throw new ApiError(403, "unauthorized Request");
-    }
-
     const projects = await Project.find();
 
     if (!projects) throw new ApiError(404, "no projects found");

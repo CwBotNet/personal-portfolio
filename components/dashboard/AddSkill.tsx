@@ -7,7 +7,7 @@ const AddSkill = () => {
   return (
     <>
       <div>
-        <form className="flex flex-col gap-2">
+        <form className="flex flex-col gap-2 capitalize">
           <label htmlFor="">skill name</label>
           <Input
             type="name"

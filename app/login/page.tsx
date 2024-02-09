@@ -3,6 +3,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Input } from "@/components/ui/input";
+import Image from "next/image";
 import "./login.css"
 export default () => {
     const [data, setData] = useState({ email: "", password: "" })
@@ -50,7 +52,7 @@ export default () => {
                         <div className="typing-shadow"></div>
                     </div>
                     : <div className="text-center">
-                        <img src="https://floatui.com/logo.svg" width={150} className="mx-auto" />
+                        <Image height={150} alt="logo" src="https://floatui.com/logo.svg" width={150} className="mx-auto" />
                         <div className="mt-5 space-y-2">
                             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">Log in to your account</h3>
                             <p className="">Don't have an account? <a href="" className="font-medium text-indigo-600 hover:text-indigo-500">Sign up</a></p>
@@ -65,22 +67,22 @@ export default () => {
                         <label className="font-medium">
                             Email
                         </label>
-                        <input
+                        <Input
                             onChange={(e) => setData({ ...data, email: e.target.value })}
                             type="email"
                             required
-                            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                            className=" w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded"
                         />
                     </div>
                     <div>
                         <label className="font-medium">
                             Password
                         </label>
-                        <input
+                        <Input
                             onChange={(e) => setData({ ...data, password: e.target.value })}
                             type="password"
                             required
-                            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                            className=" w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded"
                         />
                     </div>
                     <button

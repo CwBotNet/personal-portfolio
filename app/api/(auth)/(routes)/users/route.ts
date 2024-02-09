@@ -11,13 +11,10 @@ import { useRouter } from "next/navigation";
 // Create
 Connect();
 // Read
-export const GET = async (request: NextRequest) => {
+export const GET = async (request: NextRequest, _id: string) => {
   try {
-    const { _id } = await verifyJwt(request);
     // console.log(_id);
-
-    if (!isValidObjectId(_id))
-      throw new ApiError(404, "invalid token user not found");
+    throw new ApiError(404, "invalid token user not found");
     const user = await User.findById(_id).select("-password -refreshToken");
     // find check
     if (!user) throw new ApiError(404, "not found");
