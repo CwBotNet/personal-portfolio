@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const dashboard = () => {
   return (
-    <div className="p-8 w-full ">
+    <div className="p-8 ml-auto mr-auto w-[80vw] ">
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>

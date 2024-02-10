@@ -20,16 +20,26 @@ export default function DashboardLyaout({
   return (
     <html lang="en">
       <body
-        className={cn("min-h-screen w-full flex", inter.className, {
+        className={cn("flex flex-col bg-gray-800", inter.className, {
           "debug-screen": process.env.NODE_ENV === "development",
         })}
       >
-        <ThemeProvider attribute="class" defaultTheme="system">
-          <Sidebar />
-          {children}
+        <header className="h-full">
           <TopBar />
-        </ThemeProvider>
-      </body>
+        </header>
+        <div className="flex">
+          <section id="sidebar" className="h-full w-20">
+            <Sidebar />
+          </section>
+          <main
+            className="flex justify-center text-white h-screen w-full  rounded-tl-[4rem] bg-gray-600/45"
+          >
+            <div>
+              {children}
+            </div>
+          </main>
+        </div>
+      </body >
     </html>
   );
 }

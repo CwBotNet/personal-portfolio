@@ -4,14 +4,15 @@ import { ModeToggle } from "../modeToggle";
 
 const TopBar = () => {
   return (
-    <div className="flex justify-end gap-4 p-2 mr-4">
-      <div>
+
+    <div className="h-14 mt-4">
+      <div className="flex justify-end gap-2 " >
+        <ModeToggle />
         <ProfileDropdown />
       </div>
-      <div>
-        <ModeToggle />
-      </div>
     </div>
+
+
   );
 };
 

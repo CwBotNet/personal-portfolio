@@ -8,9 +8,11 @@ import React from "react";
 const projectPage = () => {
   return (
     <>
-      <div className="container flex flex-wrap lg:flex-nowrap lg:">
-        <div id="addProject" className="w-full p-8">
-          <Card className="col-span-3 border-none bg-gray-800/45 rounded-xl">
+      <div className="p-8 w-[80vw] ml-auto mr-auto flex flex-row-reverse flex-wrap  md:flex-nowrap gap-4 ">
+        {/* user details */}
+
+        <div className=" w-[80vw] bg-gray-800/45 rounded-xl container">
+          <Card className="border-none">
             <CardHeader>
               <CardTitle className="text-center">Add Project</CardTitle>
             </CardHeader>
@@ -35,8 +37,8 @@ const projectPage = () => {
             </CardContent>
           </Card>
         </div>
-        <div className="p-8 w-full h-screen ">
-          <Card className="col-span-4 rounded-2xl border-white/20 bg-gray-800/45">
+        <div className=" w-[80vw] rounded-xl  p-4 ">
+          <Card className="border-none">
             <CardHeader>
               <CardTitle className="text-center">Projects</CardTitle>
             </CardHeader>
@@ -45,6 +47,7 @@ const projectPage = () => {
             </CardContent>
           </Card>
         </div>
+        {/* <ProjectsTable /> */}
       </div>
     </>
   );

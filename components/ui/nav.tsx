@@ -36,142 +36,47 @@ interface NavProps {
 export function Nav({ links, isCollapsed, FooterLink }: NavProps) {
   const pathName = usePathname();
   return (
-    <TooltipProvider>
-      <div
-        data-collapsed={isCollapsed}
-        className="group h-screen flex flex-col justify-between py-6 gap-4 data-[collapsed=true]:py-1"
-      >
-        <nav className="grid  gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
-          <div className="flex justify-center flex-col gap-4 pt-8 h-full ">
-            {links.map((link, index) =>
-              isCollapsed ? (
-                <Tooltip key={index} delayDuration={0}>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        buttonVariants({
-                          variant: link.href === pathName ? "default" : "ghost",
-                          size: "icon",
-                        }),
-                        "h-9 w-9",
-                        link.variant === "default" &&
-                          "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                      )}
-                    >
-                      <link.icon className="h-4 w-4" />
-                      <span className="sr-only">{link.title}</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="right"
-                    className="flex items-center gap-4"
-                  >
-                    {link.title}
-                    {link.label && (
-                      <span className="ml-auto mr-auto text-muted-foreground">
-                        {link.label}
-                      </span>
-                    )}
-                  </TooltipContent>
-                </Tooltip>
-              ) : (
-                <Link
-                  key={index}
-                  href={link.href}
-                  className={cn(
-                    buttonVariants({
-                      variant: link.href === pathName ? "default" : "ghost",
-                      size: "sm",
-                    }),
-                    link.variant === "default" &&
-                      "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
-                    "justify-start"
-                  )}
+    <nav className="fixed top-0 left-0 w-20 h-full border-r bg-gray-800 border-none space-y-8">
+      <div className="flex flex-col h-full ">
+        <div className="h-20 flex items-center justify-center px-8">
+        </div>
+        <div className="flex-1 flex flex-col h-full">
+          <ul className="px-4 text-sm font-medium flex-1 pt-24">
+            {links.map((item, idx) => (
+              <li key={idx}>
+                <a
+                  href={item.href}
+                  className="relative flex items-center justify-center gap-x-2 text-gray-600 p-2  rounded-xl  hover:bg-gray-50 active:bg-gray-100 duration-150 group"
                 >
-                  <link.icon className="mr-2 h-4 w-4" />
-                  {link.title}
-                  {link.label && (
-                    <span
-                      className={cn(
-                        "ml-auto",
-                        link.variant === "default" &&
-                          "text-background dark:text-white"
-                      )}
-                    >
-                      {link.label}
-                    </span>
-                  )}
-                </Link>
-              )
-            )}
-          </div>
-        </nav>
-        <nav id="footer" className=" ml-auto mr-auto">
-          {FooterLink.map((link, index) =>
-            isCollapsed ? (
-              <Tooltip key={index} delayDuration={0}>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      buttonVariants({
-                        variant: link.href === pathName ? "default" : "ghost",
-                        size: "icon",
-                      }),
-                      "h-9 w-9",
-                      link.variant === "default" &&
-                        "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                    )}
-                  >
-                    <link.icon className="h-4 w-4" />
-                    <span className="sr-only">{link.title}</span>
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent
-                  side="right"
-                  className="flex items-center gap-4"
-                >
-                  {link.title}
-                  {link.label && (
-                    <span className="ml-auto text-muted-foreground">
-                      {link.label}
-                    </span>
-                  )}
-                </TooltipContent>
-              </Tooltip>
-            ) : (
-              <Link
-                key={index}
-                href={link.href}
-                className={cn(
-                  buttonVariants({
-                    variant: link.href === pathName ? "default" : "ghost",
-                    size: "sm",
-                  }),
-                  link.variant === "default" &&
-                    "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
-                  "justify-start"
-                )}
-              >
-                <link.icon className="mr-2 h-4 w-4" />
-                {link.title}
-                {link.label && (
-                  <span
-                    className={cn(
-                      "ml-auto",
-                      link.variant === "default" &&
-                        "text-background dark:text-white"
-                    )}
-                  >
-                    {link.label}
+                  <Link href={item.href} className="text-gray-500"><item.icon /></Link>
+                  <span className="absolute left-14 p-1 px-1.5 rounded-lg whitespace-nowrap text-xs text-white bg-gray-800 hidden group-hover:inline-block group-focus:hidden duration-150">
+                    {item.title}
                   </span>
-                )}
-              </Link>
-            )
-          )}
-        </nav>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div>
+            <ul className="px-4 pb-4 text-sm font-medium">
+              {FooterLink.map((item, idx) => (
+                <li key={idx}>
+                  <a
+                    href={item.href}
+                    className="relative flex items-center justify-center gap-x-2 text-gray-600 p-2 rounded-xl  hover:bg-gray-50 active:bg-gray-100 duration-150 group"
+                  >
+                    <div className="text-gray-500"><item.icon /></div>
+                    <span className="absolute left-14 p-1 px-1.5 rounded-md whitespace-nowrap text-xs text-white bg-gray-800 hidden group-hover:inline-block group-focus:hidden duration-150">
+                      {item.title}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div className="relative py-4 px-4 ">
+            </div>
+          </div>
+        </div>
       </div>
-    </TooltipProvider>
+    </nav>
   );
 }

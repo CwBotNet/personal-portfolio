@@ -40,6 +40,7 @@ const Testimonial = async () => {
               <TableRow className="capitalize">
                 <TableHead>avatar</TableHead>
                 <TableHead>name</TableHead>
+                <TableHead>company</TableHead>
                 <TableHead>role</TableHead>
                 <TableHead>comment</TableHead>
                 <TableHead>createdAt</TableHead>
@@ -58,6 +59,7 @@ const Testimonial = async () => {
                     />
                   </TableCell>
                   <TableCell>{data.name}</TableCell>
+                  <TableCell>xyz</TableCell>
                   <TableCell>ceo</TableCell>
                   <TableCell>{data.description}</TableCell>
                   {/* <TableCell>{data.description}</TableCell> */}

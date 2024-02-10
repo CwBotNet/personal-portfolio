@@ -30,8 +30,8 @@ const ProjectsTable = async () => {
   const data: IProject[] = await res.data.data;
 
   return (
-    <div className="">
-      <Table>
+    <div className="w-[50vw]">
+      <Table >
         <TableCaption>List of projects</TableCaption>
         <TableHeader>
           <TableRow>
@@ -67,6 +67,7 @@ const ProjectsTable = async () => {
         </TableFooter>
       </Table>
     </div>
+
   );
 };
 

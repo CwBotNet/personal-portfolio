@@ -31,8 +31,8 @@ const profilePage = () => {
 
   return (
     <>
-      <div className="w-screen  ">
-        <div id="banner" className=" h-[22vh]  bg-black/40 flex"></div>
+      <div className="w-full ">
+        <div id="banner" className=" h-[22vh] flex"></div>
         <div className="bg-gray-800/45 h-[240px] rounded-bl-xl rounded-br-xl">
           <div id="profileCard" className=" flex p-12">
             <div className="mt-4">
