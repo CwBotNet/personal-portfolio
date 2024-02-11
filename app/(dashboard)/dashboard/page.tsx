@@ -4,9 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const dashboard = () => {
   return (
-    <div className="p-8 ml-auto mr-auto w-[80vw] ">
-      <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList>
+    <div className="p-8 ml-auto mr-auto w-full h-screen ">
+      <Tabs defaultValue="overview" className="space-y-4 " >
+        <TabsList className="dark:text-[#EFF3F3] text-black ">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="analytics" disabled>
             Analytics
@@ -18,9 +18,9 @@ const dashboard = () => {
             Notifications
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="overview" className="space-y-4">
+        <TabsContent value="overview" className="space-y-4 ">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Card className="rounded-2xl border-white/20 bg-gray-800/45">
+            <Card className="rounded-2xl border-white/20 dark:bg-gray-800/45 bg-[#0C0C0C]/90 ">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
                   Total Revenue
@@ -45,7 +45,7 @@ const dashboard = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card className="rounded-2xl border-white/20 bg-gray-800/45">
+            <Card className="rounded-2xl border-white/20 dark:bg-gray-800/45 bg-[#0C0C0C]/90">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
                   Subscriptions
@@ -72,7 +72,7 @@ const dashboard = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card className="rounded-2xl border-white/20 bg-gray-800/45">
+            <Card className="rounded-2xl border-white/20 dark:bg-gray-800/45 bg-[#0C0C0C]/90">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Sales</CardTitle>
                 <svg
@@ -96,7 +96,7 @@ const dashboard = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card className="rounded-2xl border-white/20 bg-gray-800/45">
+            <Card className="rounded-2xl border-white/20 dark:bg-gray-800/45 bg-[#0C0C0C]/90">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
                   Active Now
@@ -123,7 +123,7 @@ const dashboard = () => {
             </Card>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4 rounded-2xl border-white/20 bg-gray-800/45">
+            <Card className="col-span-4 rounded-2xl border-white/20 dark:bg-gray-800/45 bg-[#0C0C0C]/90">
               <CardHeader>
                 <CardTitle>Overview</CardTitle>
               </CardHeader>
@@ -131,7 +131,7 @@ const dashboard = () => {
                 {/* <Overview /> */}
               </CardContent>
             </Card>
-            <Card className="col-span-3 rounded-2xl border-white/20">
+            <Card className="col-span-3 rounded-2xl dark:border-white/20 border-[#0C0C0C]/90 text-black dark:text-white">
               <CardHeader>
                 <CardTitle>Recent Sales</CardTitle>
                 <CardDescription>

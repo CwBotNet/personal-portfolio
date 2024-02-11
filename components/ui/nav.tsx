@@ -4,19 +4,9 @@
 
 import Link from "next/link";
 import { LucideIcon } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { usePathname } from "next/navigation";
 
 interface NavProps {
-  isCollapsed: boolean;
   links: {
     title: string;
     label?: string;
@@ -33,10 +23,10 @@ interface NavProps {
   }[];
 }
 
-export function Nav({ links, isCollapsed, FooterLink }: NavProps) {
+export function Nav({ links, FooterLink }: NavProps) {
   const pathName = usePathname();
   return (
-    <nav className="fixed top-0 left-0 w-20 h-full border-r bg-gray-800 border-none space-y-8">
+    <nav className="fixed top-0 left-0 w-20 h-full border-r  bg-[#151920] border-none space-y-8">
       <div className="flex flex-col h-full ">
         <div className="h-20 flex items-center justify-center px-8">
         </div>
@@ -46,9 +36,9 @@ export function Nav({ links, isCollapsed, FooterLink }: NavProps) {
               <li key={idx}>
                 <a
                   href={item.href}
-                  className="relative flex items-center justify-center gap-x-2 text-gray-600 p-2  rounded-xl  hover:bg-gray-50 active:bg-gray-100 duration-150 group"
+                  className="relative flex items-center justify-center gap-x-2 text-[#EFF6F1] p-2  rounded-xl  dark:hover:bg-gray-50 hover:bg-gray-600 active:bg-gray-100 duration-150 group"
                 >
-                  <Link href={item.href} className="text-gray-500"><item.icon /></Link>
+                  <Link href={item.href} className="text-[#EFF6F1]"><item.icon /></Link>
                   <span className="absolute left-14 p-1 px-1.5 rounded-lg whitespace-nowrap text-xs text-white bg-gray-800 hidden group-hover:inline-block group-focus:hidden duration-150">
                     {item.title}
                   </span>
@@ -62,9 +52,9 @@ export function Nav({ links, isCollapsed, FooterLink }: NavProps) {
                 <li key={idx}>
                   <a
                     href={item.href}
-                    className="relative flex items-center justify-center gap-x-2 text-gray-600 p-2 rounded-xl  hover:bg-gray-50 active:bg-gray-100 duration-150 group"
+                    className="relative flex items-center justify-center gap-x-2 dark:text-gray-600 hover:text-white p-2 rounded-xl  hover:bg-gray-50 active:bg-gray-100 duration-150 group"
                   >
-                    <div className="text-gray-500"><item.icon /></div>
+                    <div className="text-[#EFF6F1]"><item.icon /></div>
                     <span className="absolute left-14 p-1 px-1.5 rounded-md whitespace-nowrap text-xs text-white bg-gray-800 hidden group-hover:inline-block group-focus:hidden duration-150">
                       {item.title}
                     </span>

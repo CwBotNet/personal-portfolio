@@ -5,6 +5,8 @@ import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import TopBar from "@/components/dashboard/TopBar";
+// import { ModeToggle } from "@/components/modeToggle";
+import { HydrationOverlay } from "@builder.io/react-hydration-overlay";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,28 +20,38 @@ export default function DashboardLyaout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={cn("flex flex-col bg-gray-800", inter.className, {
-          "debug-screen": process.env.NODE_ENV === "development",
-        })}
+    // <HydrationOverlay>
+
+    <div
+      className={cn("flex w-full flex-col text-white bg-[#151920]", inter.className, {
+        "debug-screen": process.env.NODE_ENV === "development",
+      })}
+    >
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
       >
-        <header className="h-full">
+        <header className="h-full md:h-14 z-30">
           <TopBar />
+          {/* <ModeToggle /> */}
         </header>
         <div className="flex">
-          <section id="sidebar" className="h-full w-20">
+          <section id="sidebar" className="h-full w-20 hidden lg:block">
             <Sidebar />
           </section>
           <main
-            className="flex justify-center text-white h-screen w-full  rounded-tl-[4rem] bg-gray-600/45"
+            className="flex justify-center
+            text-white drop-shadow-2xl h-screen w-full  lg:rounded-tl-[4rem] bg-[#EFF3F3]  dark:bg-[#0C0C0C]/40"
           >
             <div>
               {children}
             </div>
           </main>
         </div>
-      </body >
-    </html>
+      </ThemeProvider>
+    </ div>
+    // </HydrationOverlay>
   );
 }

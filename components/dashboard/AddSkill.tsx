@@ -7,17 +7,17 @@ const AddSkill = () => {
   return (
     <>
       <div>
-        <form className="flex flex-col gap-2 capitalize">
+        <form className="flex flex-col gap-2 capitalize text-black dark:text-white">
           <label htmlFor="">skill name</label>
           <Input
             type="name"
             placeholder=""
-            className="border-gray-600/45 bg-gray-800/45 rounded-xl"
+            className="border-gray-600/45 dark:bg-gray-800/45 bg-[#0C0C0C]/90 rounded-xl"
           />
           <label htmlFor="">type</label>
           <Input
             type="type"
-            className="border-gray-600/45 bg-gray-800/45 rounded-xl"
+            className="border-gray-600/45 dark:bg-gray-800/45 bg-[#0C0C0C]/90 rounded-xl"
           />
           <Button variant={"Add"}>Add</Button>
         </form>

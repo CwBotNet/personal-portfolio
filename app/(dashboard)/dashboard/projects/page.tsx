@@ -8,10 +8,10 @@ import React from "react";
 const projectPage = () => {
   return (
     <>
-      <div className="p-8 w-[80vw] ml-auto mr-auto flex flex-row-reverse flex-wrap  md:flex-nowrap gap-4 ">
+      <div className="mt-6 w-full  ml-auto mr-auto flex flex-row-reverse flex-wrap  md:flex-nowrap gap-4 ">
         {/* user details */}
 
-        <div className=" w-[80vw] bg-gray-800/45 rounded-xl container">
+        <div className=" w-full ml-2 mr-2 dark:bg-gray-800/45 bg-[#0C0C0C]/90 rounded-xl ">
           <Card className="border-none">
             <CardHeader>
               <CardTitle className="text-center">Add Project</CardTitle>
@@ -37,7 +37,7 @@ const projectPage = () => {
             </CardContent>
           </Card>
         </div>
-        <div className=" w-[80vw] rounded-xl  p-4 ">
+        <div className="rounded-xl text-black dark:text-white  p-4 ">
           <Card className="border-none">
             <CardHeader>
               <CardTitle className="text-center">Projects</CardTitle>
