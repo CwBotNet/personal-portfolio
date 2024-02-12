@@ -17,19 +17,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ThemeProvider
-        defaultTheme="system"
-        enableSystem
-        attribute="class"
-        disableTransitionOnChange
+      <body
+        className={cn("min-h-screen w-full flex", inter.className, {
+          "debug-screens": process.env.NODE_ENV === "development",
+        })}
       >
-        <body className={cn(
-          "min-h-screen w-full flex",
-          inter.className,
-          { 'debug-screens': process.env.NODE_ENV === 'development' })}>
+        <ThemeProvider
+          defaultTheme="system"
+          enableSystem
+          attribute="class"
+          disableTransitionOnChange
+        >
           {children}
-        </body>
-      </ThemeProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

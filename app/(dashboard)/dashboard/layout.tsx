@@ -23,9 +23,13 @@ export default function DashboardLyaout({
     // <HydrationOverlay>
 
     <div
-      className={cn("flex w-full flex-col text-white bg-[#151920]", inter.className, {
-        "debug-screen": process.env.NODE_ENV === "development",
-      })}
+      className={cn(
+        "flex w-full flex-col text-white bg-[#151920]",
+        inter.className,
+        {
+          "debug-screen": process.env.NODE_ENV === "development",
+        }
+      )}
     >
       <ThemeProvider
         attribute="class"
@@ -43,15 +47,13 @@ export default function DashboardLyaout({
           </section>
           <main
             className="flex justify-center
-            text-white drop-shadow-2xl h-screen w-full  lg:rounded-tl-[4rem] bg-[#EFF3F3]  dark:bg-[#0C0C0C]/40"
+            text-white drop-shadow-2xl h-full w-full  lg:rounded-tl-[4rem] bg-[#EFF3F3]  dark:bg-[#0C0C0C]/40"
           >
-            <div>
-              {children}
-            </div>
+            <div>{children}</div>
           </main>
         </div>
       </ThemeProvider>
-    </ div>
+    </div>
     // </HydrationOverlay>
   );
 }

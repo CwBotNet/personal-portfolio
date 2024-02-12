@@ -25,6 +25,7 @@ export const POST = async (request: NextRequest) => {
     throw new ApiError(500, `server Error: ${error?.message}`);
   }
 };
+
 export const GET = async (request: NextRequest) => {
   try {
     const bio = await Bio.find();

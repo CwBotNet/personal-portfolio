@@ -1,4 +1,5 @@
 import mongoose, { Schema, mongo } from "mongoose";
+import { ObjectId } from "mongoose";
 
 interface IProject {
   title: string;
@@ -7,6 +8,7 @@ interface IProject {
   techStack: Schema.Types.ObjectId;
   sorceCode: string;
   livePreview: string;
+  Dev: ObjectId;
 }
 
 const ProjectSchema = new Schema<IProject>(
@@ -17,6 +19,7 @@ const ProjectSchema = new Schema<IProject>(
     techStack: { type: Schema.Types.ObjectId, ref: "Skills", required: true },
     sorceCode: { type: String, required: true },
     livePreview: { type: String },
+    Dev: { type: mongoose.Schema.ObjectId, ref: "User" },
   },
   { timestamps: true }
 );

@@ -1,7 +1,8 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { ObjectId, Schema } from "mongoose";
 
 interface IBio {
   bio: String;
+  user: ObjectId;
 }
 
 const BioSchema = new Schema<IBio>(
@@ -10,6 +11,10 @@ const BioSchema = new Schema<IBio>(
       type: String,
       required: true,
       unique: true,
+    },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
     },
   },
   { timestamps: true }
