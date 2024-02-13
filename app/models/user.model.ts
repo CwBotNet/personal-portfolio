@@ -2,14 +2,23 @@ import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-interface IUser {
+export interface IUser {
   name: string;
   email: string;
   avatar?: string;
   password: string;
+  username: string;
+  location?: string;
+  role?: string;
+  position: string;
   refreshToken: string;
 }
 
+enum Role {
+  Admin = "admin",
+  Modrator = "mod",
+  User = "user",
+}
 const UserSchema = new Schema<IUser>(
   {
     name: {
@@ -24,6 +33,10 @@ const UserSchema = new Schema<IUser>(
       lowercase: true,
       trim: true,
     },
+    location: { type: String },
+    position: { type: String },
+    role: { type: String, enum: Object.values(Role), default: Role.Admin },
+    username: { type: String, unique: true },
     avatar: {
       type: String,
     },

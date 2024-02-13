@@ -11,11 +11,14 @@ import { useRouter } from "next/navigation";
 // Create
 Connect();
 // Read
-export const GET = async (request: NextRequest, _id: string) => {
+export const GET = async (request: NextRequest) => {
   try {
+    const CurrentUser = await verifyJwt(request);
     // console.log(_id);
-    throw new ApiError(404, "invalid token user not found");
-    const user = await User.findById(_id).select("-password -refreshToken");
+    if (!isValidObjectId(CurrentUser._id) || CurrentUser.role !== "admin")
+      throw new ApiError(403, "unauthorized request");
+
+    const user = await User.find().select("-password -refreshToken");
     // find check
     if (!user) throw new ApiError(404, "not found");
     return NextResponse.json(
@@ -27,9 +30,20 @@ export const GET = async (request: NextRequest, _id: string) => {
   }
 };
 
+interface IUpdateUser {
+  name: string;
+  email: string;
+  avatar?: string;
+  password: string;
+  username: string;
+  location?: string;
+  role?: string;
+  position: string;
+}
+
 // update
 export const PATCH = async (request: NextRequest) => {
-  const { name, email } = await request.json();
+  const UpdateUser: IUpdateUser = await request.json();
 
   try {
     // user check
@@ -41,10 +55,13 @@ export const PATCH = async (request: NextRequest) => {
     }
 
     // update user
-    const updateUserDetails = await User.findByIdAndUpdate(user._id, {
-      name,
-      email,
-    });
+    const updateUserDetails = await User.findByIdAndUpdate(
+      user._id,
+      {
+        ...UpdateUser,
+      },
+      { new: true }
+    );
 
     if (!updateUserDetails) throw new ApiError(402, "Db server Errors");
 
@@ -61,9 +78,4 @@ export const PATCH = async (request: NextRequest) => {
       `Server Error while updating the user: ${error?.message}`
     );
   }
-};
-
-// Delete
-export const DELETE = async (request: NextRequest) => {
-  return NextResponse.json(new ApiResponse(200, "ok"), { status: 200 });
 };
