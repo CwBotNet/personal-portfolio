@@ -1,23 +1,15 @@
-"use client";
-import httpModule from "@/app/helpers/httpModule";
-import AddSkill from "@/components/dashboard/AddSkill";
 import Bio from "@/components/dashboard/bio";
-import ProjectsTable from "@/components/dashboard/projectsTable";
-import Skill from "@/components/dashboard/skill";
 import Skilltabls from "@/components/dashboard/skilltabls";
 import Social from "@/components/dashboard/social";
-import UserProfile from "@/components/dashboard/user";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TabsContent } from "@radix-ui/react-tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { AtSign, MapPin, Laptop2 } from "lucide-react";
 import Image from "next/image";
 
@@ -30,7 +22,7 @@ const profilePage = () => {
           <div id="profileCard" className=" flex p-12">
             <div className="mt-4">
               <Image
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src={"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
                 alt="avatar"
                 width={100}
                 height={100}

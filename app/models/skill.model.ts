@@ -1,9 +1,10 @@
 import mongoose, { ObjectId, Schema } from "mongoose";
 
-interface ISkill {
+export interface ISkill {
   name: string;
   icon: string;
   type: string;
+  level: string;
   user: ObjectId;
 }
 
@@ -12,6 +13,7 @@ const SkillSchema = new Schema<ISkill>(
     name: { type: String, required: true, unique: true },
     icon: { type: String },
     type: { type: String, required: true },
+    level: { type: String, required: true },
     user: {
       type: mongoose.Schema.ObjectId,
       ref: "User",

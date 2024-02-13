@@ -1,3 +1,4 @@
+
 import {
     Card,
     CardContent,
@@ -22,7 +23,16 @@ import { Button } from "../ui/button";
 import { Pencil, PlusCircle, Trash2 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-const Social = () => {
+import httpModule from "@/app/helpers/httpModule";
+import { IUserSocial } from "@/app/models/social.model";
+
+
+const Social = async () => {
+    const socials = await httpModule.get("/social")
+    const data: IUserSocial[] = await socials.data.data
+    // console.log(data);
+
+
     return (
         <div>
             <Card className="rounded-xl dark:border-gray-800/90">
@@ -50,52 +60,23 @@ const Social = () => {
                         </TableHeader>
 
                         <TableBody className="">
-                            <TableRow className="border-none">
-                                <TableCell className="text-center capitalize">
-                                    <Image alt="icon" src={"https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} width={20} height={20} className="rounded-full" />
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    language
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    <Link href={"#"}>link</Link>
-                                </TableCell>
-                                <TableCell className="flex justify-between">
-                                    <Button variant={"Update"} size={"sm"} className=""><Pencil /></Button>
-                                    <Button variant={"Delete"} size={"sm"} className=""><Trash2 /></Button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow className="border-none">
-                                <TableCell className="text-center capitalize">
-                                    <Image alt="icon" src={"https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} width={20} height={20} className="rounded-full" />
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    instagram
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    <Link href={"#"}>link</Link>
-                                </TableCell>
-                                <TableCell className="flex justify-between">
-                                    <Button variant={"Update"} size={"sm"} className=""><Pencil /></Button>
-                                    <Button variant={"Delete"} size={"sm"} className=""><Trash2 /></Button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow className="border-none">
-                                <TableCell className="text-center capitalize">
-                                    <Image alt="icon" src={"https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} width={20} height={20} className="rounded-full" />
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    facebook
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    <Link href={"#"}>link</Link>
-                                </TableCell>
-
-                                <TableCell className="flex justify-between">
-                                    <Button variant={"Update"} size={"sm"} className=""><Pencil /></Button>
-                                    <Button variant={"Delete"} size={"sm"} className=""><Trash2 /></Button>
-                                </TableCell>
-                            </TableRow>
+                            {data.map((data, idx) => (
+                                <TableRow className="border-none" key={idx}>
+                                    <TableCell className="text-center capitalize">
+                                        <Image alt="icon" src={data.Icon} width={20} height={20} className="rounded-full" />
+                                    </TableCell>
+                                    <TableCell className="text-center capitalize">
+                                        {data.name}
+                                    </TableCell>
+                                    <TableCell className="text-center capitalize">
+                                        <Link href={`${data.link}`}>link</Link>
+                                    </TableCell>
+                                    <TableCell className="flex justify-between">
+                                        <Button variant={"Update"} size={"sm"} className=""><Pencil /></Button>
+                                        <Button variant={"Delete"} size={"sm"} className=""><Trash2 /></Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
                         </TableBody>
                     </Table>
                 </CardContent>

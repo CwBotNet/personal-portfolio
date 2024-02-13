@@ -19,8 +19,20 @@ import {
 } from "@/components/ui/card";
 import { Button } from "../ui/button";
 import { Pencil, PlusCircle, Trash2 } from "lucide-react";
+import httpModule from "@/app/helpers/httpModule";
+import { ISkill } from "@/app/models/skill.model";
+import Image from "next/image";
 
-const Skilltabls = () => {
+const Skilltabls = async () => {
+
+    const skills = await httpModule.get("/skill")
+    const data: ISkill[] = await skills.data.data
+
+    const handelOnClick = async (id: string) => {
+        const res: any = await httpModule.delete(`/skill/${id}`)
+        if (res.statusCode !== 200) throw Error("Something went wrong")
+        return alert("deleted" + id);
+    }
     return (
         <div>
             <Card className="rounded-xl dark:border-gray-800/90">
@@ -35,6 +47,9 @@ const Skilltabls = () => {
                         <TableHeader>
                             <TableRow className="">
                                 <TableHead className="capitalize text-center">
+                                    icon
+                                </TableHead>
+                                <TableHead className="capitalize text-center">
                                     name
                                 </TableHead>
                                 <TableHead className="capitalize text-center">
@@ -47,59 +62,32 @@ const Skilltabls = () => {
                         </TableHeader>
 
                         <TableBody className="">
-                            <TableRow className="border-none">
-                                <TableCell className="text-center capitalize">
-                                    js
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    language
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    <p className="bg-[#2fbf71ff]/80 rounded-xl">high</p>
-                                </TableCell>
-                                <TableCell className="flex justify-between">
-                                    <Button variant={"Update"} size={"sm"} className=""><Pencil /></Button>
-                                    <Button variant={"Delete"} size={"sm"} className=""><Trash2 /></Button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow className="border-none">
-                                <TableCell className="text-center capitalize">
-                                    ts
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    language
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    <p className="bg-[#f9dc5cff]/80 rounded-xl">medium</p>
-                                </TableCell>
-                                <TableCell className="flex justify-between">
-                                    <Button variant={"Update"} size={"sm"} className=""><Pencil /></Button>
-                                    <Button variant={"Delete"} size={"sm"} className=""><Trash2 /></Button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow className="border-none">
-                                <TableCell className="text-center capitalize">
-                                    c#
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    language
-                                </TableCell>
-                                <TableCell className="text-center capitalize">
-                                    <p className="bg-[#ba2d0bff]/80 rounded-xl">low</p>
+                            {data.map((data, idx) => (
 
-
-                                </TableCell>
-
-                                <TableCell className="flex justify-between">
-                                    <Button variant={"Update"} size={"sm"} className=""><Pencil /></Button>
-                                    <Button variant={"Delete"} size={"sm"} className=""><Trash2 /></Button>
-                                </TableCell>
-                            </TableRow>
+                                <TableRow className="border-none" key={idx}>
+                                    <TableCell>
+                                        <Image alt="icon" height={20} width={20} src={data.icon} />
+                                    </TableCell>
+                                    <TableCell className="text-center capitalize">
+                                        {data.name}
+                                    </TableCell>
+                                    <TableCell className="text-center capitalize">
+                                        {data.type}
+                                    </TableCell>
+                                    <TableCell className="text-center capitalize">
+                                        <p className={data.level === "low" ? "bg-[#ba2d0bff]/80 rounded-xl" : data.level === "medium" ? "bg-[#fbbf24ff]/80 rounded-xl" : ` bg-[#2fbf71ff]/80 rounded-xl`}>{data.level}</p>
+                                    </TableCell>
+                                    <TableCell className="flex justify-between">
+                                        <Button variant={"Update"} size={"sm"} className=""><Pencil /></Button>
+                                        <Button variant={"Delete"} size={"sm"} className=""><Trash2 /></Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
                         </TableBody>
                     </Table>
                 </CardContent>
             </Card>
-        </div>
+        </div >
     )
 }
 

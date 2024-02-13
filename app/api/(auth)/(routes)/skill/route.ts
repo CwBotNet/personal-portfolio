@@ -1,26 +1,40 @@
 import { verifyJwt } from "@/app/helpers/verifyToken";
-import { Skill } from "@/app/models/skill.model";
+import { ISkill, Skill } from "@/app/models/skill.model";
 import { ApiError } from "@/app/utils/ApiError";
 import { ApiResponse } from "@/app/utils/ApiResponse";
-import { Connect } from "@/lib/db/DbConnection";
+import { uploadOnCloudinary } from "@/app/utils/cloudinary";
 import { useRouter } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
 
-// connect db
-Connect();
-
 export const POST = async (request: NextRequest) => {
-  const { name, type } = await request.json();
   try {
-    if (!verifyJwt(request)) {
+    const formData = await request.formData();
+
+    const name = formData.get("name");
+    const icon = formData.get("icon") as unknown as File;
+    const type = formData.get("type");
+    const level = formData.get("level");
+
+    const currentUser = await verifyJwt(request);
+    // console.log(currentUser);
+
+    if (!currentUser) {
       useRouter().push("/login");
       throw new ApiError(403, "unauthorized request");
     }
-    if (!name && !type) throw new ApiError(401, "fields are required");
 
-    const skill = await Skill.create({
+    if (!name && !type && !level && !icon)
+      throw new ApiError(401, "fields are required");
+
+    const image: any = await uploadOnCloudinary(icon, "skill-icon");
+    if (!image) throw new ApiError(402, "cloud upload Error");
+
+    const skill = await Skill.create<ISkill>({
       name,
       type,
+      icon: image?.url,
+      level,
+      user: currentUser._id,
     });
 
     if (!skill) throw new ApiError(402, "server Error while adding skill");
@@ -41,5 +55,3 @@ export const GET = async (request: NextRequest) => {
 };
 
 
-export const PATCH = async (request: NextRequest) => {};
-export const DELETE = async (request: NextRequest) => {};

@@ -19,7 +19,7 @@ export const POST = async (req: NextRequest) => {
     const Icon = formData.get("Icon") as unknown as File;
 
     const data: any = await uploadOnCloudinary(Icon, "social-icons");
-    console.log(data.url);
+    // console.log(data.url);
 
     if (!data) throw new ApiError(402, "cloud upload Error");
 
