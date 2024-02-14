@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
+import NavBar from "@/components/client/NavBar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn("min-h-screen w-full flex", inter.className, {
+        className={cn("min-h-screen w-full ", inter.className,  {
           "debug-screens": process.env.NODE_ENV === "development",
-        })}
+        }) }
       >
         <ThemeProvider
           defaultTheme="system"
@@ -28,6 +29,8 @@ export default function RootLayout({
           attribute="class"
           disableTransitionOnChange
         >
+          
+          <NavBar />
           {children}
         </ThemeProvider>
       </body>
