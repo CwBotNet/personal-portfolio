@@ -1,13 +1,13 @@
 import { ApiError } from "@/app/utils/ApiError";
 import { ApiResponse } from "@/app/utils/ApiResponse";
 import { NextRequest, NextResponse } from "next/server";
-import { User } from "@/app/models/user.model";
+import { IUser, User } from "@/app/models/user.model";
 import { Connect } from "@/lib/db/DbConnection";
 
 Connect();
 
 export const POST = async (request: NextRequest) => {
-  const { name, email, password } = await request.json();
+  const { name, email, password, username, role }: IUser = await request.json();
 
   try {
     if (!name && !email && !password) throw new Error("Missing fields");
@@ -22,13 +22,13 @@ export const POST = async (request: NextRequest) => {
       );
     }
 
-    const user = new User({
+    const user = await User.create<IUser>({
+      username,
       name,
       email,
       password,
+      role,
     });
-
-    await user.save();
 
     if (!user) throw new ApiError(402, "server Error while user resgister");
     return NextResponse.json(
