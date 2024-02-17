@@ -1,6 +1,7 @@
 import AboutSection from "@/components/client/AboutSection";
 import ContactSection from "@/components/client/ContactSection";
 import HeroSection from "@/components/client/HeroSection";
+import NavBar from "@/components/client/NavBar";
 import ProjectSection from "@/components/client/ProjectSection";
 import SkillSection from "@/components/client/SkillSection";
 import SocialSection from "@/components/client/SocialSection";
@@ -9,7 +10,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div id="main" className="container h-screen mt-12 flex flex-col gap-12 ">
+    <div id="main" className="container mt-4 flex flex-col gap-12 ">
+      <NavBar />
       <HeroSection />
       <AboutSection />
       <ProjectSection />

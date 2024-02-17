@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-
+/* 
 @layer base {
   :root {
     --engineering-orange: #ba2d0bff;
@@ -12,5 +12,5 @@
     --emerald: #2fbf71ff;
     --ghost-white: #f7f7ffff;
   }
-}
+} */
 

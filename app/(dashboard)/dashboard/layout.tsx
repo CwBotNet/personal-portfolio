@@ -5,7 +5,6 @@ import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import TopBar from "@/components/dashboard/TopBar";
-// import { ModeToggle } from "@/components/modeToggle";
 import { HydrationOverlay } from "@builder.io/react-hydration-overlay";
 
 const inter = Inter({ subsets: ["latin"] });

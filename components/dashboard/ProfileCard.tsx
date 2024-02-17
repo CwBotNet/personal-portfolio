@@ -22,12 +22,13 @@ interface IUserDetails {
 }
 
 const ProfileCard = () => {
-  const [user, setUser] = useState<IUserDetails>([]);
+  const [user, setUser] = useState<IUserDetails>(Object);
 
   useEffect(() => {
     (async () => {
       const res = await httpModule.get("/current-user");
-      console.log(res.data.data);
+      console.log(typeof res.data.data);
+
       setUser(res.data.data);
     })();
   }, []);
@@ -51,8 +52,10 @@ const ProfileCard = () => {
           <Card className="border-none">
             <CardHeader>
               <div className="md:flex md:gap-4 items-baseline">
-                <CardTitle className="capitalize">{user?.name}</CardTitle>
-                <div
+                <CardTitle className="capitalize text-sm font-semibold mt-1 md:m-0">
+                  {user?.name}
+                </CardTitle>
+                <p
                   className={
                     user.role === "admin"
                       ? "text-green-400"
@@ -61,10 +64,8 @@ const ProfileCard = () => {
                       : "text-blue-400"
                   }
                 >
-                  <p className="capitalize text-sm font-semibold mt-1 md:m-0">
-                    {user.role}
-                  </p>
-                </div>
+                  {user.role}
+                </p>
               </div>
               <CardDescription>
                 <p>{user.email}</p>

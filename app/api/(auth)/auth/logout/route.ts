@@ -2,7 +2,10 @@ import { verifyJwt } from "@/app/helpers/verifyToken";
 import { User } from "@/app/models/user.model";
 import { ApiError } from "@/app/utils/ApiError";
 import { ApiResponse } from "@/app/utils/ApiResponse";
+import { Connect } from "@/lib/db/DbConnection";
 import { NextRequest, NextResponse } from "next/server";
+
+Connect();
 
 // TODO : create logot logic
 export const GET = async (req: NextRequest) => {
