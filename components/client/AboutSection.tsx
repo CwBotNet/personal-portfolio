@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const AboutSection = () => {
   return (
-    <div id="about" className="md:h-screen flex flex-col md:flex-row">
+    <div id="about" className="md:h-screen h-full flex flex-col md:flex-row pt-[20vh]">
       <Card className="border-none">
         <CardHeader>
           <CardTitle className="text-center">About me</CardTitle>
@@ -21,7 +21,7 @@ const AboutSection = () => {
                 <h1>
                   {" "}
                   Pdm University |{" "}
-                  <span className="text-orange-400">2019 - 2022</span>S
+                  <span className="text-orange-400">2019 - 2022</span>
                 </h1>
                 <p>Diploma in Computer Science</p>
               </div>
@@ -55,14 +55,17 @@ const AboutSection = () => {
         </CardContent>
       </Card>
 
-      <Card className="w-full border-none text-center">
+      <Card className="border-none text-center w-full">
         <CardHeader>
           <CardTitle>skills</CardTitle>
         </CardHeader>
-        <CardContent className="border border-nagitive-color rounded-xl bg-card-color">
-          <div className="">
-            <Image src={""} alt="icon" className="mt-auto mb-auto" />
-            skillName
+        <CardContent className="">
+          <div className=" pt-8 flex justify-around h-[48vh] border border-nagitive-color rounded-xl bg-card-color">
+            <div className="h-0">
+              <Image src={""} alt="icon" className="mt-auto mb-auto" />
+            </div>
+            <h1>skill name</h1>
+            <h1>skill level</h1>
           </div>
         </CardContent>
       </Card>
