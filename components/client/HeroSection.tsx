@@ -7,14 +7,14 @@ const HeroSection = () => {
     return (
         <div id="home" className='h-full mt-8'>
             <div id="box" className='flex flex-col-reverse md:flex-row items-center md:justify-between gap-x-4'>
-                <div className='w-[40vw] ml-auto mr-auto '>
+                <div className=' ml-auto mr-auto '>
                     <Card className='border-none'>
                         <CardHeader>
                             <CardTitle className='text-center md:text-[4rem] text-[2rem]'>
                                 Hello<span>👋🏻</span> I am Raj
                             </CardTitle>
                         </CardHeader>
-                        <CardContent className='text-center'>
+                        <CardContent className='text-center w-full'>
                             <h1 className='md:text-[2rem] text-lg '>I am <span className='text-orange-400'>Raj</span> and I am a <span className='text-orange-400'>FullStack Developer</span></h1>
                             <h2 className='text-lg mt-2'>Building bridges between <span className='text-orange-400'> data</span> and <span className='text-orange-400'>design</span>.</h2>
                             <div id="button" className='flex gap-x-4 justify-center mt-4'>
