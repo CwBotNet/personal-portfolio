@@ -21,6 +21,7 @@ const buttonVariants = cva(
         Add: "text-[#2fbf71ff]  hover:text-[#2fbf71ff]/80",
         Update: "text-[#3581B8]  hover:text-[#3581B8]/80",
         Delete: "text-[#E55812]  hover:text-[#E55812]/80",
+        submit:"hover:bg-[#0c0c0cff]/80 bg-[#0c0c0cff] "
       },
       size: {
         default: "h-10 px-4 py-2",
