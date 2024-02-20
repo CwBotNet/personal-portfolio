@@ -61,7 +61,30 @@ export const POST = async (request: NextRequest) => {
 // read
 export const GET = async (request: NextRequest) => {
   try {
-    const projects = await Project.find();
+    const projectPipline = [
+      {
+        $lookup: {
+          from: "skills",
+          localField: "techStack",
+          foreignField: "_id",
+          as: "tag",
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          title: 1,
+          description: 1,
+          sorceCode: 1,
+          livePreview: 1,
+          tag: "$tag.name",
+          createdAt: 1,
+          updatedAt: 1,
+        },
+      },
+    ];
+
+    const projects = await Project.aggregate(projectPipline);
 
     if (!projects) throw new ApiError(404, "no projects found");
 
