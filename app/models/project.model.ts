@@ -19,7 +19,7 @@ const ProjectSchema = new Schema<IProject>(
     techStack: { type: Schema.Types.ObjectId, ref: "Skills", required: true },
     sorceCode: { type: String, required: true },
     livePreview: { type: String },
-    Dev: { type: mongoose.Schema.ObjectId, ref: "User" },
+    Dev: { type: mongoose.Schema.ObjectId, ref: "Users" },
   },
   { timestamps: true }
 );

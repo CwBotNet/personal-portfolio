@@ -1,12 +1,11 @@
 import { ApiError } from "@/app/utils/ApiError";
 import { NextRequest, NextResponse } from "next/server";
-import { IProject, Project } from "@/app/models/project.model";
+import { Project } from "@/app/models/project.model";
 import { verifyJwt } from "@/app/helpers/verifyToken";
 import { useRouter } from "next/navigation";
 import { ApiResponse } from "@/app/utils/ApiResponse";
 import { Connect } from "@/lib/db/DbConnection";
 import { uploadOnCloudinary } from "@/app/utils/cloudinary";
-import { isValidObjectId } from "mongoose";
 
 // connect to the db
 Connect();
@@ -27,6 +26,8 @@ export const POST = async (request: NextRequest) => {
       useRouter().push("/login");
       throw new ApiError(403, "unauthorized Request");
     }
+
+    const { _id } = await verifyJwt(request);
     // image check
     if (!coverImage || !title || !description || !techStack || !sorceCode)
       throw new ApiError(401, "except live preview all fields is required");
@@ -40,6 +41,7 @@ export const POST = async (request: NextRequest) => {
       livePreview,
       sorceCode,
       techStack,
+      dev: _id,
     });
 
     if (!addProject) throw new ApiError(402, "Db server Error");
@@ -75,6 +77,7 @@ export const GET = async (request: NextRequest) => {
           _id: 0,
           title: 1,
           description: 1,
+          coverImage: 1,
           sorceCode: 1,
           livePreview: 1,
           tag: "$tag.name",
