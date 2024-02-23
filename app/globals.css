@@ -3,6 +3,26 @@
 @tailwind utilities;
 
 
+
+
+body::-webkit-scrollbar-thumb {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+html::-webkit-scrollbar {
+  width: 12px;
+  border: 2rem;
+  border-color: #F5F5F5;
+  background-color: #1041d393;
+}
+
+
+.scroll::-webkit-scrollbar {
+  display: none;
+
+}
+
 /* 
 @layer base {
   :root {
@@ -13,6 +33,13 @@
     --ghost-white: #f7f7ffff;
   }
 } */
+
+:root {
+  --slate-900: #101011;
+  --neutral-900: #45474e;
+  /* Black (Main) - #0B132B */
+}
+
 
 /* CSS HEX */
 /* --fawn: #f7b267ff;

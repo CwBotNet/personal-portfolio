@@ -11,7 +11,7 @@ import {
 
 const TestimonialSection = () => {
     return (
-        <div className='h-full'>
+        <div className='h-full container'>
             <Card className='border-none'>
                 <CardHeader className='text-center m-2'>
                     <CardTitle>

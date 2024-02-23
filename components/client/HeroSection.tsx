@@ -18,6 +18,7 @@ import { MovingBorder } from '../ui/moving-border'
 import { Spotlight } from './Spotlight'
 import { ButtonsCard, buttons } from '../ui/tailwindcss-buttons'
 import { TypewriterEffectSmooth } from '../ui/typewriter-effect'
+import { BackgroundBeams } from '../ui/background-beams'
 
 
 const words = [
@@ -46,7 +47,7 @@ const words = [
 
 const HeroSection = () => {
     return (
-        <div id="home" className='h-full mt-8 '>
+        <div id="home" className='h-full flex  items-center justify-center mt-8 container'>
             {/* <Spotlight
                 className="-top-40 left-0 md:left-60 md:-top-20"
                 fill="white" /> */}
@@ -105,6 +106,7 @@ const HeroSection = () => {
                 <div className='flex items-center  md:w-[30vw]'> <Image src={profile} height={350} width={350} alt='dev image' className='ml-auto mr-auto' />
                 </div>
             </div>
+            <BackgroundBeams className="z-[-11]" />
         </div>
     )
 }

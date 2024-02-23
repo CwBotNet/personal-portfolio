@@ -11,7 +11,7 @@ const ProjectSection = async () => {
   // console.log(response.data.data);
   const data: any = response.data.data;
   return (
-    <div id="project" className="h-full ">
+    <div id="project" className="container">
       <h1 className="text-center">ProjectSection</h1>
       <div className=" flex flex-col md:flex-row gap-6 items-center md:justify-center mt-12">
         <ProjectTabs data={data} />

@@ -12,7 +12,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div id="main" className="container mt-4 flex flex-col  ">
+    <div id="main" className=" mt-4 flex flex-col gap-y-24 ">
 
       <NavBar />
       <HeroSection />

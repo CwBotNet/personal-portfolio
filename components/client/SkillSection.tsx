@@ -28,14 +28,14 @@ const items = [
 ]
 const SkillSection = () => {
   return (
-    <div className='flex justify-center'>
+    <div className='flex justify-center container'>
       <Card className='w-[80vw] flex flex-col items-center border-none'>
         <CardContent>
-          <div className='flex w-[80vw] md:w-full justify-center md:justify-start gap-2 flex-wrap mt-6'>
+          <div className='flex w-[80vw] sm:w-full justify-center md:justify-start gap-2 flex-wrap mt-6'>
             <InfiniteMovingCards
               items={items}
               // direction=''
-              speed='normal'
+              speed='fast'
             >
 
             </InfiniteMovingCards>
