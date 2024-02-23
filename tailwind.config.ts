@@ -57,7 +57,7 @@ const config = {
         "card-color": "#1C2541",
         "font-color": "#EFE9E7",
         "hightlight-color": "5BC0BE",
-        "nagitive-color":"#3A506B"
+        "nagitive-color": "#3A506B",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -69,12 +69,19 @@ const config = {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
       },
       animation: {
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },

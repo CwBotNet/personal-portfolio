@@ -8,14 +8,17 @@ import SocialSection from "@/components/client/SocialSection";
 import TestimonialSection from "@/components/client/TestimonialSection";
 import Image from "next/image";
 
+
+
 export default function Home() {
   return (
-    <div id="main" className="container mt-4 flex flex-col gap-12 ">
+    <div id="main" className="container mt-4 flex flex-col  ">
+
       <NavBar />
       <HeroSection />
+      <SkillSection />
       <AboutSection />
       <ProjectSection />
-      <SkillSection />
       <TestimonialSection />
       <ContactSection />
       <SocialSection />

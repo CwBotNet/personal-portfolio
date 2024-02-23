@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import Link from "next/link";
 import Image from "next/image";
+import { BackgroundBeams } from "../ui/background-beams";
 
 const AboutSection = () => {
   return (
@@ -56,6 +57,7 @@ const AboutSection = () => {
 
         </CardContent>
       </Card>
+      <BackgroundBeams className="z-[-11]" />
     </div>
   );
 };
