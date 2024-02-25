@@ -12,8 +12,8 @@ export const InfiniteMovingCards = ({
 }: {
     items: {
         image: Element;
-        name: string;
-        title: string;
+        name?: string;
+        title?: string;
     }[];
     direction?: "left" | "right";
     speed?: "fast" | "normal" | "slow";
@@ -85,7 +85,7 @@ export const InfiniteMovingCards = ({
                     pauseOnHover && "hover:[animation-play-state:paused]"
                 )}
             >
-                {items.map((item, idx) => (
+                {items.map((item: any, idx) => (
                     <li
                         className="relative rounded-2xl px-8 py-6 "
                         style={{
@@ -102,7 +102,7 @@ export const InfiniteMovingCards = ({
                             <span className=" relative z-20 text-sm leading-[1.6] text-gray-100 font-normal">
                                 {item.image}
                             </span>
-                            <div className="relative z-20 mt-6 flex flex-row items-center">
+                            {/* <div className="relative z-20 mt-6 flex flex-row items-center">
                                 <span className="flex flex-col gap-1">
                                     <span className=" text-sm leading-[1.6] text-gray-400 font-normal">
                                         {item.name}
@@ -111,7 +111,7 @@ export const InfiniteMovingCards = ({
                                         {item.title}
                                     </span>
                                 </span>
-                            </div>
+                            </div> */}
                         </blockquote>
                     </li>
                 ))}

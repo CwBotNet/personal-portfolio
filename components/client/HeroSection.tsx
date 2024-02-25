@@ -60,11 +60,11 @@ const HeroSection = () => {
                             </CardTitle>
                         </CardHeader>
                         <CardContent className='flex flex-col items-center w-full'>
-                            <TypewriterEffectSmooth cursorClassName='bg-orange-400/80 h-8' words={words} />
+                            <TypewriterEffectSmooth cursorClassName='bg-orange-400/80 h-6' words={words} />
                             <h2 className='text-lg mt-2'>Building bridges between <span className='text-orange-400'> data</span> and <span className='text-orange-400'>design</span>.</h2>
                             <div id="button" className='flex gap-x-4 justify-center mt-4'>
                                 <Drawer>
-                                    <DrawerTrigger className='border md:hidden px-4 rounded border-nagitive-color bg-card-color'>contact me</DrawerTrigger>
+                                    <DrawerTrigger className='border md:hidden px-4 rounded-2xl border-nagitive-color bg-card-color'>contact me</DrawerTrigger>
                                     <DrawerContent className='bg-card-color h-[80vh] border-nagitive-color'>
                                         <DrawerHeader className='mt-2'>
                                             <DrawerTitle className='pt-8'>I'm just an email away from turning your ideas into reality.</DrawerTitle>
