@@ -10,9 +10,9 @@ const waveColor = [
 
 const ContactSection = () => {
   return (
-    <div className="container">
+    <div className="container" id="contact">
       {/* <WavyBackground waveOpacity={0.2} className="absolute w-full" colors={waveColor} speed="slow" > */}
-      <h1 className="text-center text-4xl font-bold p-4">contact</h1>
+      <h1 className="text-center text-2xl font-semibold p-4">contact</h1>
       <div className="flex md:justify-around flex-col md:flex-row gap-12 h-full">
         <div className="md:w-[40vw] flex justify-center items-center tracking-wider">
           <h1 className="text-3xl text-center">I'm passionate about design and

@@ -11,10 +11,10 @@ import {
 
 const TestimonialSection = () => {
     return (
-        <div className='h-full container'>
+        <div className='h-full w-full container p-8' id="testimonials">
             <Card className='border-none'>
                 <CardHeader className='text-center m-2'>
-                    <CardTitle>
+                    <CardTitle className='text-2xl font-semibold'>
                         Testimonial
                     </CardTitle>
                 </CardHeader>

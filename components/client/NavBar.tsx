@@ -1,25 +1,56 @@
 import React from "react";
-import { ModeToggle } from "../modeToggle";
-import Link from "next/link";
+import { FloatingNav } from "../ui/floating-navbar";
+import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
 
-const NavBar = () => {
+type Props = {
+  className: string;
+}
+export function NavBar(props: Props) {
+  const navItems = [
+    {
+      name: "Home",
+      link: "#home",
+      icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "About",
+      link: "#about",
+      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Project",
+      link: "#project",
+      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Testimonials",
+      link: "#testimonials",
+      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Contact",
+      link: "#contact",
+      icon: (
+        <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
+      ),
+    },
+  ];
   return (
-    <div className="w-full h-10  md:h-10  sticky top-2  bg-black rounded-2xl z-50 container">
-      <div className="container flex justify-between">
-        <div
-          id="navgation"
-          className="capitalize flex items-center gap-x-4 font-bold text-white"
-        >
-          <Link href={"#home"}>home</Link>
-          <Link href={"#about"}>about</Link>
-          <Link href={"#project"}>Project</Link>
-          <Link href={"#contact"}>contact</Link>
-        </div>
-
-        <ModeToggle />
-      </div>
+    <div className={`relative  w-full ${props.className}`}>
+      <FloatingNav navItems={navItems} />
+      {/* <DummyContent /> */}
+    </div >
+  );
+}
+const DummyContent = () => {
+  return (
+    <div className="grid grid-cols-1 h-[40rem] w-full bg-white dark:bg-black relative border border-neutral-200 dark:border-white/[0.2] rounded-md">
+      <p className="dark:text-white text-neutral-600 text-center text-4xl mt-40 font-bold">
+        Scroll back up to reveal Navbar
+      </p>
+      <div className="inset-0 absolute bg-grid-black/[0.1] dark:bg-grid-white/[0.2]" />
     </div>
   );
 };
 
-export default NavBar;
+
