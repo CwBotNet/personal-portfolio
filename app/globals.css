@@ -13,8 +13,9 @@ body::-webkit-scrollbar-thumb {
 html::-webkit-scrollbar {
   width: 12px;
   border: 2rem;
-  border-color: #F5F5F5;
-  background-color: #1041d393;
+  display: none;
+  /* border-color: #F5F5F5; */
+  /* background-color: #1041d393; */
 }
 
 

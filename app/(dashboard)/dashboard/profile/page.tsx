@@ -5,7 +5,7 @@ import Skilltabls from "@/components/dashboard/skilltabls";
 import Social from "@/components/dashboard/social";
 
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/shadcn/tabs";
 
 
 const ProfilePage = () => {
