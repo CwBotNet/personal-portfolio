@@ -23,7 +23,7 @@ export const POST = async (request: NextRequest) => {
   try {
     // user check
     if (!verifyJwt(request)) {
-      useRouter().push("/login");
+      // useRouter().push("/login");
       throw new ApiError(403, "unauthorized Request");
     }
 

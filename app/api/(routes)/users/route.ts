@@ -1,12 +1,12 @@
-import { User } from "../../../../models/user.model";
-import { ApiError } from "../../../../utils/ApiError";
-import { ApiResponse } from "../../../../utils/ApiResponse";
+import { User } from "@/app/models/user.model";
+import { ApiError } from "@/app/utils/ApiError";
+import { ApiResponse } from "@/app/utils/ApiResponse";
 import { NextRequest, NextResponse } from "next/server";
 import { verifyJwt } from "@/app/helpers/verifyToken";
 
 import { Connect } from "@/lib/db/DbConnection";
 import { isValidObjectId } from "mongoose";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 // Create
 Connect();
@@ -50,7 +50,7 @@ export const PATCH = async (request: NextRequest) => {
     const user = await verifyJwt(request);
 
     if (!user) {
-      useRouter().push("/login");
+      // useRouter().push("/login");
       throw new ApiError(403, "unauthorized operation");
     }
 

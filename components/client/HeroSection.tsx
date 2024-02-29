@@ -68,8 +68,7 @@ const HeroSection = () => {
                                     <DrawerTrigger className='border sm:hidden px-4 rounded-2xl border-nagitive-color bg-card-color'>contact me</DrawerTrigger>
                                     <DrawerContent className='bg-card-color h-[80vh] border-nagitive-color'>
                                         <DrawerHeader className='mt-2'>
-                                            <DrawerTitle className='pt-8'>I'm just an email away from turning your ideas into reality.</DrawerTitle>
-                                            <DrawerDescription></DrawerDescription>
+                                            <DrawerTitle className='pt-8'>I&apos;m just an email away from turning your ideas into reality.</DrawerTitle>
                                         </DrawerHeader>
                                         <ContactForm className=' h-full mt-4' />
                                     </DrawerContent>

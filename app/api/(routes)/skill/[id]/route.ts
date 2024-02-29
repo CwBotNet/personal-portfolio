@@ -2,9 +2,11 @@ import { ISkill, Skill } from "@/app/models/skill.model";
 import { ApiError } from "@/app/utils/ApiError";
 import { ApiResponse } from "@/app/utils/ApiResponse";
 import { uploadOnCloudinary } from "@/app/utils/cloudinary";
-import { log } from "console";
 import { isValidObjectId } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
+
+import { Connect } from "@/lib/db/DbConnection";
+Connect();
 
 export const PATCH = async (request: NextRequest) => {
   try {

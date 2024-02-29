@@ -27,7 +27,7 @@ const ProfileCard = () => {
   useEffect(() => {
     (async () => {
       const res = await httpModule.get("/current-user");
-      console.log(typeof res.data.data);
+      // console.log(typeof res.data.data);
 
       setUser(res.data.data);
     })();
@@ -60,15 +60,15 @@ const ProfileCard = () => {
                     user.role === "admin"
                       ? "text-green-400"
                       : user.role === "modrator"
-                      ? "text-orange-500"
-                      : "text-blue-400"
+                        ? "text-orange-500"
+                        : "text-blue-400"
                   }
                 >
                   {user.role}
                 </p>
               </div>
               <CardDescription>
-                <p>{user.email}</p>
+                {user.email}
               </CardDescription>
             </CardHeader>
             <CardContent className=" flex gap-2 flex-wrap capitalize text-[0.6rem] md:text-[0.8rem]">

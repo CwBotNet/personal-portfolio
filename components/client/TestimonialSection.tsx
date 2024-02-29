@@ -26,7 +26,7 @@ const TestimonialSection = () => {
                                     <div className="p-1 gap-12 flex justify-center">
                                         <Card className='md:w-[20vw] rounded-xl p-4 border-none'>
                                             <div className='flex flex-col items-center'>
-                                                <p className='text-center'>"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur deserunt est atque."</p>
+                                                <p className='text-center'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur deserunt est atque.</p>
                                                 <div className='flex mt-4 gap-2'>
                                                     <div className='flex items-center'><Image alt='profile' width={1200} height={1200} className='h-10 w-10 rounded-full' src={"https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} /></div>
                                                     <div className='flex flex-col justify-center'>

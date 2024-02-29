@@ -4,6 +4,9 @@ import { ApiResponse } from "@/app/utils/ApiResponse";
 import { uploadOnCloudinary } from "@/app/utils/cloudinary";
 import { NextRequest, NextResponse } from "next/server";
 
+import { Connect } from "@/lib/db/DbConnection";
+Connect();
+
 // creata
 export const POST = async (request: NextRequest) => {
   const formData = await request.formData();

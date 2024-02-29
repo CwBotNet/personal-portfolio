@@ -1,4 +1,4 @@
-"use client";
+
 import { date } from "@/lib/utils";
 import {
   Card,

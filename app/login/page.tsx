@@ -17,7 +17,7 @@ const LoginPage = () => {
     try {
       setLoading(true);
       const response = await axios.post("/api/auth/login", data);
-      console.log("login success", response.data);
+      // console.log("login success", response.data);
 
       router.push("/dashboard");
     } catch (error: any) {
@@ -33,7 +33,7 @@ const LoginPage = () => {
     } else {
       setButtonDisabled(false);
     }
-  });
+  }, []);
 
   return (
     <main className="w-full h-screen flex flex-col items-center justify-center px-4 bg-white">
@@ -61,7 +61,7 @@ const LoginPage = () => {
                 Log in to your account
               </h3>
               <p className="">
-                Don't have an account?{" "}
+                Don&apos;t have an account?
                 <a
                   href=""
                   className="font-medium text-indigo-600 hover:text-indigo-500"

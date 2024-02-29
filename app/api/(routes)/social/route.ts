@@ -5,6 +5,9 @@ import { verifyJwt } from "@/app/helpers/verifyToken";
 import { IUserSocial, Social } from "@/app/models/social.model";
 import { uploadOnCloudinary } from "@/app/utils/cloudinary";
 
+import { Connect } from "@/lib/db/DbConnection";
+Connect();
+
 export const POST = async (req: NextRequest) => {
   try {
     const currentUser = await verifyJwt(req);

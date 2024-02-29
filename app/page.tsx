@@ -7,7 +7,6 @@ import ProjectSection from "@/components/client/ProjectSection";
 import SkillSection from "@/components/client/SkillSection";
 import SocialSection from "@/components/client/SocialSection";
 import TestimonialSection from "@/components/client/TestimonialSection";
-import Image from "next/image";
 
 
 

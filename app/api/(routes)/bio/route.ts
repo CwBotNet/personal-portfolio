@@ -1,7 +1,10 @@
 import { Bio } from "@/app/models/bio.model";
 import { ApiError } from "@/app/utils/ApiError";
 import { ApiResponse } from "@/app/utils/ApiResponse";
+import { Connect } from "@/lib/db/DbConnection";
 import { NextRequest, NextResponse } from "next/server";
+
+Connect();
 
 // creata
 export const POST = async (request: NextRequest) => {

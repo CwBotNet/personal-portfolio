@@ -5,6 +5,9 @@ import { uploadOnCloudinary } from "@/app/utils/cloudinary";
 import { isValidObjectId } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
+import { Connect } from "@/lib/db/DbConnection";
+Connect();
+
 export const PATCH = async (request: NextRequest) => {
   try {
     const id = request.nextUrl.pathname.split("social/")[1];

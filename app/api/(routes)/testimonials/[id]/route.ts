@@ -5,6 +5,9 @@ import { uploadOnCloudinary } from "@/app/utils/cloudinary";
 import { isValidObjectId } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
+import { Connect } from "@/lib/db/DbConnection";
+Connect();
+
 export const PATCH = async (request: NextRequest) => {
   const id = request.nextUrl.pathname.split("/api/testimonials/")[1];
   const formData = await request.formData();

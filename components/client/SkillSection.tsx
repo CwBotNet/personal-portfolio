@@ -14,8 +14,8 @@ const SkillSection = async () => {
   const response = await httpModule.get('/skill')
   const data = response.data.data
 
-  const items = data.map((item: any) => ({
-    image: <Image width={500} height={500} alt="skill icon" className={` w-20 `} src={item.icon} />,
+  const items = data.map((item: any, idx: any) => ({
+    image: <Image key={idx} width={500} height={500} alt="skill icon" className={` w-20 `} src={item.icon} />,
   }));
 
   return (

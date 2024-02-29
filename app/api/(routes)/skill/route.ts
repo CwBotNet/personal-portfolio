@@ -6,6 +6,9 @@ import { uploadOnCloudinary } from "@/app/utils/cloudinary";
 import { useRouter } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
 
+import { Connect } from "@/lib/db/DbConnection";
+Connect();
+
 export const POST = async (request: NextRequest) => {
   try {
     const formData = await request.formData();
@@ -19,7 +22,7 @@ export const POST = async (request: NextRequest) => {
     // console.log(currentUser);
 
     if (!currentUser) {
-      useRouter().push("/login");
+      // useRouter().push("/login");
       throw new ApiError(403, "unauthorized request");
     }
 

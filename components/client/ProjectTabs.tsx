@@ -12,8 +12,8 @@ const ProjectTabs = (props: Props) => {
         <div className=' container w-full h-screen flex gap-x-4 flex-wrap items-center justify-center'>
             {
                 props.data.map(
-                    (data: any) => (
-                        <div className="relative mt-12 flex w-80 flex-col rounded-xl bg-[#FBFBFF] bg-clip-border text-gray-700 shadow-md">
+                    (data: any, idx: any) => (
+                        <div key={idx} className="relative mt-12 flex w-80 flex-col rounded-xl bg-[#FBFBFF] bg-clip-border text-gray-700 shadow-md">
                             <div className={`relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r bg-cover bg-center from-blue-500 to-blue-600 `}
                                 style={{ backgroundImage: `url(${data.coverImage})` }}
                             >

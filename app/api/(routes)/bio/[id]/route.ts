@@ -4,6 +4,9 @@ import { ApiResponse } from "@/app/utils/ApiResponse";
 import { isValidObjectId } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
+import { Connect } from "@/lib/db/DbConnection";
+Connect();
+
 export const PATCH = async (request: NextRequest) => {
   const id = request.nextUrl.pathname.split("/api/bio/")[1];
   const { bio } = await request.json();
