@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-// import { withHydrationOverlay } from "@builder.io/react-hydration-overlay/next";
 const nextConfig = {
   images: {
     remotePatterns: [
