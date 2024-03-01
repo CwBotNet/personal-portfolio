@@ -36,9 +36,9 @@ export const PATCH = async (request: NextRequest) => {
   const CurrentUser = await verifyJwt(request);
   const updates: IUpdateuser = await request.json();
 
-  console.log(CurrentUser.role)
+  console.log(CurrentUser.role);
   try {
-    if (!isValidObjectId(CurrentUser._id)|| CurrentUser.role !== "admin")
+    if (!isValidObjectId(CurrentUser._id) || CurrentUser.role !== "admin")
       throw new ApiError(403, "unauthorized request");
 
     const updateUser = await User.findByIdAndUpdate(

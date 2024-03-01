@@ -6,7 +6,7 @@ import { isValidObjectId } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 import { Connect } from "@/lib/db/DbConnection";
-Connect();
+// Connect();
 
 export const PATCH = async (request: NextRequest) => {
   try {

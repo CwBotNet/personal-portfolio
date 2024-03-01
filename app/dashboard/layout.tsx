@@ -5,7 +5,6 @@ import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import TopBar from "@/components/dashboard/TopBar";
-import { HydrationOverlay } from "@builder.io/react-hydration-overlay";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +18,7 @@ export default function DashboardLyaout({
   children: React.ReactNode;
 }) {
   return (
-    // <HydrationOverlay>
+
 
     <div
       className={cn(
@@ -53,6 +52,6 @@ export default function DashboardLyaout({
         </div>
       </ThemeProvider>
     </div>
-    // </HydrationOverlay>
+
   );
 }

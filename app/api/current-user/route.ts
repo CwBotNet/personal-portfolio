@@ -11,6 +11,8 @@ Connect();
 export const GET = async (request: NextRequest) => {
   const CurrentUser = await verifyJwt(request);
 
+  // console.log(CurrentUser);
+
   try {
     if (!isValidObjectId(CurrentUser._id))
       throw new ApiError(403, "user not found invalid token");

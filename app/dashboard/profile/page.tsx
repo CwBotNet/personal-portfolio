@@ -1,4 +1,3 @@
-import httpModule from "@/app/helpers/httpModule";
 import ProfileCard from "@/components/dashboard/ProfileCard";
 import Bio from "@/components/dashboard/bio";
 import Skilltabls from "@/components/dashboard/skilltabls";

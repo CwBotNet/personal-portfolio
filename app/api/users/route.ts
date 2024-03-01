@@ -14,7 +14,7 @@ Connect();
 export const GET = async (request: NextRequest) => {
   try {
     const CurrentUser = await verifyJwt(request);
-    // console.log(_id);
+    // console.log(CurrentUser);
     if (!isValidObjectId(CurrentUser._id) || CurrentUser.role !== "admin")
       throw new ApiError(403, "unauthorized request");
 

@@ -6,7 +6,7 @@ import { IUserSocial, Social } from "@/app/models/social.model";
 import { uploadOnCloudinary } from "@/app/utils/cloudinary";
 
 import { Connect } from "@/lib/db/DbConnection";
-Connect();
+// Connect();
 
 export const POST = async (req: NextRequest) => {
   try {
