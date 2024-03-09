@@ -12,7 +12,7 @@ import TestimonialSection from "@/components/client/TestimonialSection";
 
 export default function Home() {
   return (
-    <div id="main" className=" mt-4 flex flex-col gap-y-24 ">
+    <div id="main" className="mt-4 flex flex-col gap-y-24 ">
 
       <DesktopNavBar className=" md:hidden" />
       <NavBar className="hidden md:inline-block" />
