@@ -42,7 +42,7 @@ const ProfileDropdown = () => {
   const { push } = useRouter();
 
   const handelLogOut = async () => {
-    const response = await httpModule.get("/auth/logout");
+    const response = await httpModule.get("/logout");
     if (!response) throw Error("something went wrong on logout");
     push("/login");
     return response;

@@ -2,7 +2,7 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/shadcn/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-const dashboard = () => {
+export default function Dashboard() {
   return (
     <div className="p-8 ml-auto mr-auto w-full h-screen ">
       <Tabs defaultValue="overview" className="space-y-4 " >
@@ -149,4 +149,3 @@ const dashboard = () => {
   );
 };
 
-export default dashboard;

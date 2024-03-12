@@ -23,15 +23,36 @@ interface IUserDetails {
 
 const ProfileCard = () => {
   const [user, setUser] = useState<IUserDetails>(Object);
+  const [error, setError]: any = useState<string | null>(null);
 
+  // Fetch data using useEffect
   useEffect(() => {
-    (async () => {
-      const res = await httpModule.get("/current-user");
-      // console.log(typeof res.data.data);
 
-      setUser(res.data.data);
-    })();
+    const fetchData = async () => {
+      try {
+        const res = await httpModule.get("/current-user");
+        setUser(res.data.data);
+      } catch (error: any) {
+        setError(error?.message);
+      }
+    };
+    fetchData();
   }, []);
+
+  // Handle errors in the rendered content
+  if (!user && !error) {
+    return <div>Loading...</div>; // Display loading state while fetching data
+  }
+
+  if (error) {
+    return (
+      <div>
+        <h1>Something went wrong: {error?.message}</h1>
+      </div>
+    );
+  }
+
+  // ... rest of your component logic 
 
   return (
     <>
@@ -40,9 +61,7 @@ const ProfileCard = () => {
         <div id="profileCard" className=" flex p-12">
           <div className="mt-4">
             <Image
-              src={
-                "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              }
+              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="avatar"
               width={100}
               height={100}
@@ -67,9 +86,7 @@ const ProfileCard = () => {
                   {user.role}
                 </p>
               </div>
-              <CardDescription>
-                {user.email}
-              </CardDescription>
+              <CardDescription>{user.email}</CardDescription>
             </CardHeader>
             <CardContent className=" flex gap-2 flex-wrap capitalize text-[0.6rem] md:text-[0.8rem]">
               <p className="flex gap-2">
@@ -81,10 +98,7 @@ const ProfileCard = () => {
                 {user.location}
               </p>
               <p className="flex gap-2">
-                <Laptop2
-                  size={12}
-                  className="mt-auto mb-auto text-orange-400"
-                />
+                <Laptop2 size={12} className="mt-auto mb-auto text-orange-400" />
                 {user.position}
               </p>
             </CardContent>
@@ -95,4 +109,4 @@ const ProfileCard = () => {
   );
 };
 
-export default ProfileCard;
+export { ProfileCard };

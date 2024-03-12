@@ -1,4 +1,5 @@
-import ProfileCard from "@/components/dashboard/ProfileCard";
+"use client"
+import {ProfileCard} from "@/components/dashboard/ProfileCard";
 import Bio from "@/components/dashboard/bio";
 import Skilltabls from "@/components/dashboard/skilltabls";
 import Social from "@/components/dashboard/social";

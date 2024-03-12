@@ -3,17 +3,15 @@ import { ApiError } from "@/app/utils/ApiError";
 import { ApiResponse } from "@/app/utils/ApiResponse";
 import { NextRequest, NextResponse } from "next/server";
 import { verifyJwt } from "@/app/helpers/verifyToken";
-
 import { isValidObjectId } from "mongoose";
 
 import { Connect } from "@/lib/db/DbConnection";
+
 Connect();
 export const GET = async (request: NextRequest) => {
-  const CurrentUser = await verifyJwt(request);
-
-  // console.log(CurrentUser);
-
   try {
+    const CurrentUser = await verifyJwt(request);
+    // console.log(CurrentUser);
     if (!isValidObjectId(CurrentUser._id))
       throw new ApiError(403, "user not found invalid token");
     // console.log(CurrentUser._id);

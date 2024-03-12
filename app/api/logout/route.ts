@@ -5,14 +5,12 @@ import { ApiResponse } from "@/app/utils/ApiResponse";
 import { Connect } from "@/lib/db/DbConnection";
 import { NextRequest, NextResponse } from "next/server";
 
-Connect();
-
 // TODO : create logot logic
 export const GET = async (req: NextRequest) => {
+  await Connect();
   try {
     const { _id } = await verifyJwt(req);
     // console.log(_id);
-
     await User.findByIdAndUpdate(
       _id,
       {
