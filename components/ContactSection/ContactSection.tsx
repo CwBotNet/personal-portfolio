@@ -12,6 +12,7 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 
 import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
+import { Button } from '../ui/button'
 
 
 
@@ -51,40 +52,52 @@ type Props = {}
 
 const ContactSection = (props: Props) => {
     return (
-        <div id='contact' className='flex justify-around pt-24'>
-            <div id='contactsection' className='w-60vw'>
-                <Label>
-                    Name
-                </Label>
-                <Input placeholder="Name" />
-                <Label>
-                    Email
-                </Label>
-                <Input placeholder="Email" type='email' />
-                <Label>
-                    Contact
-                </Label>
-                <Input placeholder="contact" type='number' />
-                <Select>
-                    <SelectTrigger className="mt-2">
-                        <SelectValue placeholder="service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="light">Frontend</SelectItem>
-                        <SelectItem value="dark">Backend</SelectItem>
-                        <SelectItem value="system">FullStack</SelectItem>
-                    </SelectContent>
-                </Select>
-                <Textarea placeholder="message" className='mt-4' />
-            </div>
-            <div id="testimonial" className="h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+
+        <>
+            <div id="testimonial" className="h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden ">
                 <InfiniteMovingCards
                     items={testimonials}
                     direction="right"
                     speed="normal"
                 />
             </div>
-        </div>
+
+            <div id='contact' className='flex flex-col-reverse lg:flex-row-reverse md:justify-around items-center pt-24 gap-12'>
+                <div id='contactsection' className='w-[80vw]'>
+                    <Label>
+                        Name
+                    </Label>
+                    <Input placeholder="Name" />
+                    <Label>
+                        Email
+                    </Label>
+                    <Input placeholder="Email" type='email' />
+                    <Label>
+                        Contact
+                    </Label>
+                    <Input placeholder="contact" type='number' />
+                    <Select>
+                        <SelectTrigger className="mt-2">
+                            <SelectValue placeholder="service" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="light">Frontend</SelectItem>
+                            <SelectItem value="dark">Backend</SelectItem>
+                            <SelectItem value="system">FullStack</SelectItem>
+                        </SelectContent>
+                    </Select>
+                    <Textarea placeholder="message" className='mt-4' />
+                    <Button className='mt-4 w-full'>Send Message</Button>
+                </div>
+                <div className="flex justify-center items-center tracking-wider">
+                    <h1 className="text-3xl text-center">I&apos;m passionate about design and
+                        <span className="text-orange-400">
+                            {" "} I&apos;m always looking for new projects.
+                        </span>
+                        Let&apos;s chat and see how I can help bring your vision to life</h1>
+                </div>
+            </div>
+        </>
     )
 }
 

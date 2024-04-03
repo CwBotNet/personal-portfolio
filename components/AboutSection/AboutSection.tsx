@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Tabs } from '../ui/tabs'
+import { Tabs } from '@/components/ui/aceternity/tabs'
 
 type Props = {}
 
@@ -40,7 +40,7 @@ const AboutSection = (props: Props) => {
     return (
         <div className='h-screen'>
             <div id='about' className=''>
-                <Tabs tabs={tabs} tabClassName='' />
+                <Tabs tabs={tabs}  />
             </div>
         </div>
     )

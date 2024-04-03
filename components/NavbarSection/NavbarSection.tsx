@@ -17,8 +17,8 @@ const navItems = [
         link: "#skill"
     },
     {
-        name: "Contact",
-        link: "#contact"
+        name: "Projects",
+        link: "#projects"
     }
 ]
 

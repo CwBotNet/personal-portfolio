@@ -37,7 +37,7 @@ const HeroSection = (props: Props) => {
                 <h2 className='text-lg mt-2'>Building bridges between <span className='text-orange-400'> data</span> and <span className='text-orange-400'>design</span>.</h2>
             </div>
             <div id='image'>
-                <Image src={'/image/avatar.png'} width={1920} height={1080} alt='Developer character' className='w-56' />
+                <Image src={'/image/avatar.png'} width={1920} height={1080} alt='Developer character' className='w-[20rem]' />
             </div>
             <div id='social'>
                 <div>socials</div>
