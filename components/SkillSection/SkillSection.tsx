@@ -40,7 +40,7 @@ const content = [
 const SkillSection = (props: Props) => {
     return (
         <div id='skill' className=''>
-            <StickyScroll content={content} />
+            <StickyScroll content={content} contentClassName='' />
         </div>
     )
 }

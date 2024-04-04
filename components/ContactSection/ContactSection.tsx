@@ -54,7 +54,7 @@ const ContactSection = (props: Props) => {
     return (
 
         <>
-            <div id="testimonial" className="h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden ">
+            <div id="testimonial" className="h-[40rem] mt-[6rem] rounded-xl flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden ">
                 <InfiniteMovingCards
                     items={testimonials}
                     direction="right"
@@ -62,7 +62,7 @@ const ContactSection = (props: Props) => {
                 />
             </div>
 
-            <div id='contact' className='flex flex-col-reverse lg:flex-row-reverse md:justify-around items-center pt-24 gap-12'>
+            <div id='contact' className=' container p-12 flex flex-col-reverse lg:flex-row-reverse md:justify-around items-center pt-24 gap-12'>
                 <div id='contactsection' className='w-[80vw]'>
                     <Label>
                         Name
