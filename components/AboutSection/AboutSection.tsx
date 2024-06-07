@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { Tabs } from '@/components/ui/aceternity/tabs'
+import Education from './Education'
 
 type Props = {}
 
@@ -10,7 +11,7 @@ const tabs = [
         title: 'About me ',
         value: 'about',
         content: (
-            <div className="w-full overflow-hidden relative h-[60vh] rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+            <div className='w-full overflow-hidden relative h-[60vh] rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-slate-950 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'>
                 about me
             </div>
         )
@@ -19,7 +20,7 @@ const tabs = [
         title: "Certifications",
         value: "certification",
         content: (
-            <div className='w-full overflow-hidden relative h-[60vh] rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900'>
+            <div className='w-full overflow-hidden relative h-[60vh] rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-slate-950 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'>
                 certification card
             </div>
         )
@@ -28,9 +29,7 @@ const tabs = [
         title: "Education",
         value: "education",
         content: (
-            <div className='w-full overflow-hidden relative h-[60vh] rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900'>
-                education card
-            </div>
+            <Education />
         )
     },
 

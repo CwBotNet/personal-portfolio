@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import { Label } from '@/components/ui/label'
 import { Input } from '../ui/input'
 import {
@@ -13,7 +14,9 @@ import { Textarea } from "@/components/ui/textarea"
 
 import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
 import { Button } from '../ui/button'
-
+import axios from "axios"
+import { Contact } from 'lucide-react'
+import SubmitSuccess from './SubmitSuccess'
 
 
 const testimonials = [
@@ -51,6 +54,39 @@ const testimonials = [
 type Props = {}
 
 const ContactSection = (props: Props) => {
+    const [formData, setFormData] = useState({
+        name: '', email: '', contact: "", service: "", message: '',
+    });
+    const [send, setSend] = useState(false);
+
+    const handleChange = (e: any) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSelectChange = (value: any) => {
+        setFormData({ ...formData, service: value });
+    };
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (!res.ok) {
+            setSend(false);
+        }
+
+        const data = await res.json();
+        setSend(!send);
+    };
+
+
     return (
 
         <>
@@ -61,34 +97,38 @@ const ContactSection = (props: Props) => {
                     speed="normal"
                 />
             </div>
-
             <div id='contact' className=' container p-12 flex flex-col-reverse lg:flex-row-reverse md:justify-around items-center pt-24 gap-12'>
-                <div id='contactsection' className='w-[80vw]'>
-                    <Label>
-                        Name
-                    </Label>
-                    <Input placeholder="Name" />
-                    <Label>
-                        Email
-                    </Label>
-                    <Input placeholder="Email" type='email' />
-                    <Label>
-                        Contact
-                    </Label>
-                    <Input placeholder="contact" type='number' />
-                    <Select>
-                        <SelectTrigger className="mt-2">
-                            <SelectValue placeholder="service" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="light">Frontend</SelectItem>
-                            <SelectItem value="dark">Backend</SelectItem>
-                            <SelectItem value="system">FullStack</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <Textarea placeholder="message" className='mt-4' />
-                    <Button className='mt-4 w-full'>Send Message</Button>
-                </div>
+                {send ? <SubmitSuccess /> :
+                    <form onSubmit={handleSubmit}>
+
+                        <div id='contactsection' className='w-[80vw]'>
+                            <Label>
+                                Name
+                            </Label>
+                            <Input type='text' placeholder="Name" value={formData.name} name='name' onChange={handleChange} />
+                            <Label>
+                                Email
+                            </Label>
+                            <Input placeholder="Email" type='email' name='email' value={formData.email} onChange={handleChange} />
+                            <Label>
+                                Contact
+                            </Label>
+                            <Input placeholder="contact" type='number' name="contact" value={formData.contact} onChange={handleChange} />
+                            <Select name='service' onValueChange={(e) => handleSelectChange(e)} value={formData.service}>
+                                <SelectTrigger className="mt-2">
+                                    <SelectValue placeholder="service" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="Frontend">Frontend</SelectItem>
+                                    <SelectItem value="Backend">Backend</SelectItem>
+                                    <SelectItem value="FullStack">FullStack</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <Textarea placeholder="message" className='mt-4' name='message' value={formData.message} onChange={handleChange} />
+                            <Button type='submit' onClick={handleSubmit} className='mt-4 w-full'>Send Message</Button>
+                        </div>
+                    </form>
+                }
                 <div className="flex justify-center items-center tracking-wider">
                     <h1 className="text-3xl text-center">I&apos;m passionate about design and
                         <span className="text-orange-400">
