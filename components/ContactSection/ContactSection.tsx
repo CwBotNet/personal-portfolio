@@ -98,10 +98,11 @@ const ContactSection = (props: Props) => {
                 />
             </div>
             <div id='contact' className=' container p-12 flex flex-col-reverse lg:flex-row-reverse md:justify-around items-center pt-24 gap-12'>
-                {send ? <SubmitSuccess /> :
-                    <form onSubmit={handleSubmit}>
 
-                        <div id='contactsection' className='w-[80vw]'>
+
+                <div id='contactsection' className='w-[80vw]'>
+                    {send ? <SubmitSuccess /> :
+                        <form onSubmit={handleSubmit}>
                             <Label>
                                 Name
                             </Label>
@@ -126,9 +127,9 @@ const ContactSection = (props: Props) => {
                             </Select>
                             <Textarea placeholder="message" className='mt-4' name='message' value={formData.message} onChange={handleChange} />
                             <Button type='submit' onClick={handleSubmit} className='mt-4 w-full'>Send Message</Button>
-                        </div>
-                    </form>
-                }
+                        </form>
+                    }
+                </div>
                 <div className="flex justify-center items-center tracking-wider">
                     <h1 className="text-3xl text-center">I&apos;m passionate about design and
                         <span className="text-orange-400">

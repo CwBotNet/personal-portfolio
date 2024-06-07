@@ -1,8 +1,15 @@
-import { postContactHandler, getUserDataHandler } from "@/app/handlers";
+import {
+  postContactHandler,
+  getUserDataHandler,
+  getEducationHandler,
+  getProjectHandler,
+  getTestimonialsHandler,
+  getCertificationHandler,
+} from "@/app/handlers";
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 import { cors } from "hono/cors";
-import { getEducationHandler } from "@/app/handlers/Education.handler";
+
 export const runtime = "edge";
 
 const app = new Hono().basePath("/api");
@@ -23,14 +30,14 @@ app.get("/user", ...getUserDataHandler);
 app.get("/education", ...getEducationHandler);
 
 // certification data
-app.get("/certification");
+app.get("/certification", ...getCertificationHandler);
 
 // project data
-app.get("/project");
+app.get("/project", ...getProjectHandler);
 
 // testimonial data
-app.get("/testimonial");
-app.post("/testimonial");
+app.get("/testimonial", ...getTestimonialsHandler);
+app.post("/testimonial"); // not added yet
 
 // contact data
 app.post("/contact", ...postContactHandler);
