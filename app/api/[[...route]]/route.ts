@@ -18,9 +18,6 @@ app.use("/api/*", cors());
 app.get("/healthcheck", (c) => {
   return c.json(
     {
-      env: process.env.VERCEL_ENV,
-      env2: process.env.ENV_VAR,
-      notion_key:process.env.NOTION_API_KEY,
       message: "Hello, nextjs",
     },
     200
