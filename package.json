@@ -29,7 +29,8 @@
     "react-dom": "^18",
     "simplex-noise": "^4.0.1",
     "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vercel": "^34.2.6"
   },
   "devDependencies": {
     "@types/node": "^20",

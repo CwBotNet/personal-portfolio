@@ -18,6 +18,8 @@ app.use("/api/*", cors());
 app.get("/healthcheck", (c) => {
   return c.json(
     {
+      env: process.env.VERCEL_ENV,
+      env2: process.env.ENV_VAR,
       message: "Hello, nextjs",
     },
     200
