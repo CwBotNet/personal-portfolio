@@ -15,6 +15,7 @@ const getProjectHandler = factory.createHandlers(async (c) => {
       stack: row.stack.multi_select,
       description: row.Description.rich_text[0].text.content,
       link: row.link.url,
+      code_link: row.code_link.url,
       image: row.image.files[0].file.url,
     }));
 
@@ -24,4 +25,18 @@ const getProjectHandler = factory.createHandlers(async (c) => {
   }
 });
 
-export { getProjectHandler };
+const querProjectHandler = factory.createHandlers(async (c) => {
+  const response = await notion.databases.query({
+    database_id: process.env.NOTION_PROJECT_DB_ID!,
+    filter: {
+      property: "stack",
+      multi_select: {
+        contains: "04738948-98c3-47c5-892c-488d466fb541"
+      },
+    },
+  });
+
+  return c.json({ projects: response.results });
+});
+
+export { getProjectHandler, querProjectHandler };

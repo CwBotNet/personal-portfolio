@@ -1,12 +1,15 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
 import { HoverEffect } from '../ui/aceternity/card-hover-effect'
+import axios from 'axios'
+import { Project } from '@/types'
+
 
 type Props = {}
 
-
+// static dummy data
 const projects = [
     {
         title: "Stripe",
@@ -47,47 +50,60 @@ const projects = [
 ];
 
 const ProjectSection = (props: Props) => {
+    const [data, setData] = useState([])
+    // const { data } = useSWR('/api/project', fetcher)
+    useEffect(() => {
+        async function fetchData() {
+            const { data } = await axios.get('/api/project')
+            console.log(data.projects)
+
+            setData(data.projects)
+        }
+
+        fetchData()
+    }, [])
+
+
+    const project = data.map((proj: Project) => ({
+        title: proj.name,
+        stack: proj.stack,
+        description: proj.description,
+        link: proj.link,
+        code_link: proj.code_link,
+        image: proj.image
+    }))
+    // console.log(project)
+
     return (
         <div id='projects' className=' flex justify-center mt-24'>
             <Tabs defaultValue='All'  >
                 <div className='justify-center flex'>
                     <TabsList className=''>
                         <TabsTrigger value='All'>All</TabsTrigger>
-                        <TabsTrigger value='Nextjs'>Next.js</TabsTrigger>
-                        <TabsTrigger value='Mern'>Mern</TabsTrigger>
-                        <TabsTrigger value='Backend'>Backend</TabsTrigger>
-                        <TabsTrigger value='Frontend'>Frontend</TabsTrigger>
+                        {project.map((tab) => (
+                            tab.stack?.map((tab: any) => (
+                                <TabsTrigger key={tab.id} value={tab.name}>{tab.name}</TabsTrigger>
+                            ))
+                        ))}
                     </TabsList>
                 </div>
                 <TabsContent value='All'>
                     <div className="max-w-5xl mx-auto px-8">
-                        <HoverEffect items={projects} />
+                        <HoverEffect items={project} />
                     </div>
                 </TabsContent>
-                <TabsContent value='Nextjs'>
-                    Next.js projects
-                    <div className="max-w-5xl mx-auto px-8">
-                        <HoverEffect items={projects} />
-                    </div>
-                </TabsContent>
-                <TabsContent value='Mern'>
-                    Mern projects
-                    <div className="max-w-5xl mx-auto px-8">
-                        <HoverEffect items={projects} />
-                    </div>
-                </TabsContent>
-                <TabsContent value='Backend'>
-                    Backend projects
-                    <div className="max-w-5xl mx-auto px-8">
-                        <HoverEffect items={projects} />
-                    </div>
-                </TabsContent>
-                <TabsContent value='Frontend'>
-                    Frontend projects
-                    <div className="max-w-5xl mx-auto px-8">
-                        <HoverEffect items={projects} />
-                    </div>
-                </TabsContent>
+
+                {
+                    project.map((tab) => (
+                        tab.stack?.map((tab: any) => (
+                            <TabsContent key={tab.id} value={tab.name}>
+                                <div className="max-w-5xl mx-auto px-8">
+                                    <HoverEffect items={project} />
+                                </div>
+                            </TabsContent>
+                        ))
+                    ))
+                }
 
             </Tabs>
         </div>

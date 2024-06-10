@@ -17,6 +17,7 @@ import { Button } from '../ui/button'
 import axios from "axios"
 import { Contact } from 'lucide-react'
 import SubmitSuccess from './SubmitSuccess'
+import { useToast } from '../ui/use-toast'
 
 
 const testimonials = [
@@ -55,10 +56,11 @@ type Props = {}
 
 const ContactSection = (props: Props) => {
     const [formData, setFormData] = useState({
-        name: '', email: '', contact: "", service: "", message: '',
+        name: '', email: '', contact: '', service: '', message: '',
     });
-    const [send, setSend] = useState(false);
+    const [isSend, setIsSend] = useState(true);
 
+    const { toast } = useToast()
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -79,11 +81,20 @@ const ContactSection = (props: Props) => {
         });
 
         if (!res.ok) {
-            setSend(false);
+            setIsSend(false);
         }
 
+
         const data = await res.json();
-        setSend(!send);
+        if (!data) setIsSend(false)
+        setIsSend(true);
+        setFormData({
+            name: '', email: '', contact: '', service: '', message: '',
+        })
+        toast({
+            title: `I got your message! ${formData.name} 👍 I'll be in touch soon.`
+        })
+
     };
 
 
@@ -101,34 +112,34 @@ const ContactSection = (props: Props) => {
 
 
                 <div id='contactsection' className='w-[80vw]'>
-                    {send ? <SubmitSuccess /> :
-                        <form onSubmit={handleSubmit}>
-                            <Label>
-                                Name
-                            </Label>
-                            <Input type='text' placeholder="Name" value={formData.name} name='name' onChange={handleChange} />
-                            <Label>
-                                Email
-                            </Label>
-                            <Input placeholder="Email" type='email' name='email' value={formData.email} onChange={handleChange} />
-                            <Label>
-                                Contact
-                            </Label>
-                            <Input placeholder="contact" type='number' name="contact" value={formData.contact} onChange={handleChange} />
-                            <Select name='service' onValueChange={(e) => handleSelectChange(e)} value={formData.service}>
-                                <SelectTrigger className="mt-2">
-                                    <SelectValue placeholder="service" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="Frontend">Frontend</SelectItem>
-                                    <SelectItem value="Backend">Backend</SelectItem>
-                                    <SelectItem value="FullStack">FullStack</SelectItem>
-                                </SelectContent>
-                            </Select>
-                            <Textarea placeholder="message" className='mt-4' name='message' value={formData.message} onChange={handleChange} />
-                            <Button type='submit' onClick={handleSubmit} className='mt-4 w-full'>Send Message</Button>
-                        </form>
-                    }
+                    <form onSubmit={handleSubmit}>
+                        <Label>
+                            Name
+                        </Label>
+                        <Input type='text' placeholder="Name" value={formData.name} name='name' onChange={handleChange} />
+                        <Label>
+                            Email
+                        </Label>
+                        <Input placeholder="Email" type='email' name='email' value={formData.email} onChange={handleChange} />
+                        <Label>
+                            Contact
+                        </Label>
+                        <Input placeholder="contact" type='number' name="contact" value={formData.contact} onChange={handleChange} />
+                        <Select name='service' onValueChange={(e) => handleSelectChange(e)} value={formData.service}>
+                            <SelectTrigger className="mt-2">
+                                <SelectValue placeholder="service" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="Frontend">Frontend</SelectItem>
+                                <SelectItem value="Backend">Backend</SelectItem>
+                                <SelectItem value="FullStack">FullStack</SelectItem>
+                            </SelectContent>
+                        </Select>
+                        <Textarea placeholder="message" className='mt-4' name='message' value={formData.message} onChange={handleChange} />
+                        <Button type='submit' onClick={handleSubmit} className='mt-4 w-full'>
+                            {isSend ? "Send message" : "Sending..."}
+                        </Button>
+                    </form>
                 </div>
                 <div className="flex justify-center items-center tracking-wider">
                     <h1 className="text-3xl text-center">I&apos;m passionate about design and

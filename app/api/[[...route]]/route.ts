@@ -5,6 +5,7 @@ import {
   getProjectHandler,
   getTestimonialsHandler,
   getCertificationHandler,
+  querProjectHandler,
 } from "@/app/handlers";
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
@@ -34,6 +35,7 @@ app.get("/certification", ...getCertificationHandler);
 
 // project data
 app.get("/project", ...getProjectHandler);
+app.post("/project", ...querProjectHandler);
 
 // testimonial data
 app.get("/testimonial", ...getTestimonialsHandler);

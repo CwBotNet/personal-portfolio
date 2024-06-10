@@ -5,7 +5,6 @@ import { BackgroundBeams } from '../ui/aceternity/background-beams'
 import DownloadBtn from '../ui/DownloadBtn'
 import ContactButton from '../ui/ContactButton'
 
-type Props = {}
 
 const words = [
     {
@@ -31,7 +30,7 @@ const words = [
 
 ]
 
-const HeroSection = (props: Props) => {
+const HeroSection = () => {
     return (
         <>
 

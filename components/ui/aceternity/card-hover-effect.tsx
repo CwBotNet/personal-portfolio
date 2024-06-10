@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { Github, Link2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-
 export const HoverEffect = ({
     items,
     className,
@@ -11,6 +11,9 @@ export const HoverEffect = ({
         title: string;
         description: string;
         link: string;
+        code_link?: string;
+        image?: string;
+        stack?: string[];
     }[];
     className?: string;
 }) => {
@@ -49,8 +52,26 @@ export const HoverEffect = ({
                         )}
                     </AnimatePresence>
                     <Card>
-                        <CardTitle>{item.title}</CardTitle>
+                        <div className="flex items-center gap-2">
+                            <CardTitle>{item.title}</CardTitle>
+                            <Link href={`${item.code_link}`} >
+                                <Link2 />
+                            </Link>
+                        </div>
                         <CardDescription>{item.description}</CardDescription>
+
+                        <div className="flex flex-wrap gap-1 pt-1">
+                            {item.stack?.map((stack: any) => (
+                                <div key={stack.id} className={``}>
+                                    <span className='inline-flex cursor-pointer items-center justify-center rounded-full border border-gray-800 bg-gray-950 px-3 py-1 text-xs font-medium text-gray-300 backdrop-blur-3xl'>
+                                        <span className='bg-gradient-to-t from-[#fff] to-[#8678f9] bg-clip-text text-transparent'>
+                                            {stack.name}
+                                        </span>
+                                    </span>
+                                </div>
+                            ))}
+
+                        </div>
                     </Card>
                 </Link>
             ))}

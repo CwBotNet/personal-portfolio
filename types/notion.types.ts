@@ -9,6 +9,7 @@ export type ProjectRow = {
   stack: { id: string; multi_select: string };
   Description: { id: string; rich_text: { text: { content: string } }[] };
   link: { id: string; url: string };
+  code_link: { id: string; url: string };
   image: {
     id: string;
     files: {
