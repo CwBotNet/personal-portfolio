@@ -64,7 +64,7 @@ const ProjectSection = (props: Props) => {
     }, [])
 
 
-    const project = data.map((proj: Project) => ({
+    const project = data.map((proj: any) => ({
         title: proj.name,
         stack: proj.stack,
         description: proj.description,
