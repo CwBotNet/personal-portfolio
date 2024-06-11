@@ -51,7 +51,20 @@ const projects = [
 
 const ProjectSection = (props: Props) => {
     const [data, setData] = useState([])
+    const [stack, setStack] = useState("")
     // const { data } = useSWR('/api/project', fetcher)
+
+    useEffect(() => {
+        async function fetchDynamicData() {
+            const { data } = await axios.post('/api/project?stack=' + stack)
+            console.log(data.projects)
+            setData(data.projects)
+        }
+
+        fetchDynamicData()
+
+    }, [stack])
+
     useEffect(() => {
         async function fetchData() {
             const { data } = await axios.get('/api/project')
@@ -82,7 +95,7 @@ const ProjectSection = (props: Props) => {
                         <TabsTrigger value='All'>All</TabsTrigger>
                         {project.map((tab) => (
                             tab.stack?.map((tab: any) => (
-                                <TabsTrigger key={tab.id} value={tab.name}>{tab.name}</TabsTrigger>
+                                <TabsTrigger key={tab.id} value={tab.name} onClick={() => setStack(tab.name)}>{tab.name}</TabsTrigger>
                             ))
                         ))}
                     </TabsList>
