@@ -36,13 +36,13 @@ const HeroSection = () => {
 
             <BackgroundBeams />
             <div id='Home' className='h-[80vh] md:flex-row flex flex-col gap-x-16 justify-center place-items-center p-4 gap-8'>
-                <div id='self intro' className='flex  flex-col gap-6 '>
-                    <div className='flex flex-col items-center'>
+                <div id='self intro' className='flex  flex-col gap-6'>
+                    <div className='flex flex-col items-center w-[25vw]'>
                         <h1 className='text-4xl'>Hello<span>👋🏻</span> I am Raj</h1>
                         <TypewriterEffectSmooth words={words} />
                         <h2 className='text-lg'>Building bridges between <span className='text-orange-400'> data</span> and <span className='text-orange-400'>design</span>.</h2>
                     </div>
-                    <div className='flex justify-between items-center '>
+                    <div className='flex justify-center gap-x-8 items-center '>
                         <DownloadBtn />
                         <ContactButton />
                     </div>
@@ -50,9 +50,6 @@ const HeroSection = () => {
 
                 <div id='image'>
                     <Image src={'/image/avatar.png'} width={1920} height={1080} alt='Developer character' className='w-[20rem]' />
-                </div>
-                <div id='social'>
-                    <div>socials</div>
                 </div>
 
             </div>

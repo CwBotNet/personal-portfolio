@@ -8,7 +8,7 @@ export const HoverEffect = ({
     className,
 }: {
     items: {
-        title: string;
+        name: string;
         description: string;
         link: string;
         code_link?: string;
@@ -53,7 +53,7 @@ export const HoverEffect = ({
                     </AnimatePresence>
                     <Card>
                         <div className="flex items-center gap-2">
-                            <CardTitle>{item.title}</CardTitle>
+                            <CardTitle>{item.name}</CardTitle>
                             <Link href={`${item.code_link}`} >
                                 <Link2 />
                             </Link>
