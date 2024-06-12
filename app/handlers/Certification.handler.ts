@@ -14,9 +14,9 @@ const getCertificationHandler = factory.createHandlers(async (c) => {
   const RowJsonData = rows.map((row) => ({
     name: row.Name.title[0].text.content,
     course: row.course.rich_text[0].text.content,
+    link: row.link.url,
     image: row.image.files[0].file.url,
     logo: row.logo.files[0].file.url,
-    link: row.link.url,
   }));
 
   return c.json({ certifications: RowJsonData });

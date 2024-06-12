@@ -1,12 +1,34 @@
-import React from 'react'
 import CardWrapper from '../ui/CardWrapper'
+import { baseURL } from '@/constant';
 
-type Props = {}
+const getData = async () => {
+    try {
+        const res = await fetch(`${baseURL}/api/user`, { cache: "force-cache" });
 
-const AboutMe = (props: Props) => {
+        if (!res.ok) {
+            throw new Error("Failed to fetch data");
+        }
+
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.error("Error:", error);
+        throw error; // re-throw the error after logging it
+    }
+}
+
+const AboutMe = async () => {
+    const data = await getData()
+
+
+    // console.log(data.response[0].about)
     return (
         <CardWrapper>
-            About me
+            <div className='flex justify-center items-center p-8'>
+                <h1>
+                    {data.response[0].about}
+                </h1>
+            </div>
         </CardWrapper>
     )
 }
