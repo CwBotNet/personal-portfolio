@@ -21,6 +21,7 @@ const Navbar = (props: Props) => {
                 <div className='flex gap-x-8 items-center'>
                     <Link href={"/"}>Home</Link>
                     <Link href={"#about"}>About</Link>
+                    <Link href={"#skill"}>Skill</Link>
                     <Link href={"#projects"}>Projects</Link>
                     <button className="inline-flex h-12 items-center justify-center rounded-md bg-neutral-950 px-6 font-medium text-neutral-50 transition active:scale-110 ">
                         <Link href={"#contact"}>Contact</Link>

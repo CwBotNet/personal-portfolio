@@ -50,7 +50,7 @@ const ProjectTabs = ({
     };
 
     return (
-        <div className='h-[48rem] pt-24'>
+        <div className='min-h-svh pt-24'>
             <Tabs defaultValue='All'>
                 <div className='justify-center flex'>
                     <TabsList className=' '>

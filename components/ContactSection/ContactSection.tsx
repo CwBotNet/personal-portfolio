@@ -131,7 +131,7 @@ const ContactSection = () => {
                     className=''
                 />
             </div> */}
-            <div id='contact' className=' min-h-svh container p-8 flex flex-col-reverse lg:flex-row-reverse md:justify-around items-center gap-12'>
+            <div id='contact' className='container p-8 flex flex-col-reverse lg:flex-row-reverse md:justify-around items-center gap-12'>
 
 
                 <div id='contactsection' className='w-[80vw]'>
