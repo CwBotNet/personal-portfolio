@@ -47,7 +47,7 @@ const ProjectSection: React.FC = (props: Props) => {
     });
 
     return (
-        <div id='projects' className='flex justify-center mt-24'>
+        <div id='projects' className='flex justify-center'>
             <ProjectTabs filteredData={filteredData} handleTabClick={handleTabClick} uniqueTabs={uniqueTabs} />
         </div>
     );

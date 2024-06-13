@@ -18,6 +18,9 @@ import axios from "axios"
 import { Contact } from 'lucide-react'
 import SubmitSuccess from './SubmitSuccess'
 import { useToast } from '../ui/use-toast'
+import useSWR from 'swr'
+import { fetcher } from '@/lib'
+import { baseURL } from '@/constant'
 
 
 const testimonials = [
@@ -52,12 +55,31 @@ const testimonials = [
     },
 ];
 
-type Props = {}
 
-const ContactSection = (props: Props) => {
+
+const ContactSection = () => {
     const [formData, setFormData] = useState({
         name: '', email: '', contact: '', service: '', message: '',
     });
+
+    const [testimonials, setTeatimonials] = useState([])
+
+    useEffect(() => {
+        async function getData() {
+            const res = await fetch(`/api/testimonial`, { cache: "force-cache" })
+            if (!res.ok) {
+                console.log("failed to fetch data")
+            }
+            const data = await res.json()
+            setTeatimonials(data.testimonials)
+
+        }
+        getData()
+    }, [])
+
+
+
+    // const testimonials = data.testimonials
     const [isSend, setIsSend] = useState(true);
 
     const { toast } = useToast()
@@ -101,14 +123,15 @@ const ContactSection = (props: Props) => {
     return (
 
         <>
-            <div id="testimonial" className="h-[40rem] mt-[6rem] rounded-xl flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden ">
+            {/* <div id="testimonial" className="h-[40rem]  mt-[12rem] rounded-xl flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden ">
                 <InfiniteMovingCards
                     items={testimonials}
                     direction="right"
-                    speed="normal"
+                    speed="fast"
+                    className=''
                 />
-            </div>
-            <div id='contact' className=' container p-12 flex flex-col-reverse lg:flex-row-reverse md:justify-around items-center pt-24 gap-12'>
+            </div> */}
+            <div id='contact' className=' min-h-svh container p-8 flex flex-col-reverse lg:flex-row-reverse md:justify-around items-center gap-12'>
 
 
                 <div id='contactsection' className='w-[80vw]'>
@@ -142,9 +165,9 @@ const ContactSection = (props: Props) => {
                     </form>
                 </div>
                 <div className="flex justify-center items-center tracking-wider">
-                    <h1 className="text-3xl text-center">I&apos;m passionate about design and
+                    <h1 className=" text-md lg:text-3xl text-center">I&apos;m passionate about design and
                         <span className="text-orange-400">
-                            {" "} I&apos;m always looking for new projects.
+                            {" "} I&apos;m always looking for new projects.{" "}
                         </span>
                         Let&apos;s chat and see how I can help bring your vision to life</h1>
                 </div>

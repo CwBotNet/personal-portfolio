@@ -1,5 +1,6 @@
 import React from 'react'
 import { FloatingNav } from '../ui/floating-navbar'
+import Navbar from './Navbar'
 
 type Props = {}
 
@@ -25,7 +26,10 @@ const navItems = [
 
 const NavbarSection = (props: Props) => {
     return (
-        <div><FloatingNav navItems={navItems} className='' /></div>
+        <div>
+            <Navbar />
+            <FloatingNav navItems={navItems} className='' />
+        </div>
     )
 }
 

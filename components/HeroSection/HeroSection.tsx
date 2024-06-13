@@ -34,10 +34,9 @@ const HeroSection = () => {
     return (
         <>
 
-            <BackgroundBeams />
-            <div id='Home' className='h-[80vh] md:flex-row flex flex-col gap-x-16 justify-center place-items-center p-4 gap-8'>
+            <div id='Home' className='min-h-svh z-50  md:flex-row flex flex-col gap-x-16 justify-center place-items-center items-center gap-8'>
                 <div id='self intro' className='flex  flex-col gap-6'>
-                    <div className='flex flex-col items-center sm:w-[25vw]'>
+                    <div className='flex flex-col items-center justify-center '>
                         <h1 className='text-4xl'>Hello<span>👋🏻</span> I am Raj</h1>
                         <TypewriterEffectSmooth words={words} />
                         <h2 className='text-lg'>Building bridges between <span className='text-orange-400'> data</span> and <span className='text-orange-400'>design</span>.</h2>
@@ -53,6 +52,7 @@ const HeroSection = () => {
                 </div>
 
             </div>
+            <BackgroundBeams />
 
         </>
     )

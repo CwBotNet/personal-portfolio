@@ -23,7 +23,7 @@ const Education = async () => {
 
     return (
         <CardWrapper>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center tracking-wider'>
                 <span className='bg-gradient-to-t from-[#c7d2fe] to-[#8678f9] bg-clip-text text-xl text-transparent'>
                     {data.education[0].Name}
                 </span>

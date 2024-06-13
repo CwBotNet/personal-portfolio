@@ -6,13 +6,12 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 import { createFactory } from "hono/factory";
-import axios from "axios";
 
 const factory = createFactory();
 export const fetcher = async (url: string) => {
-  const { data } = await axios.get(url);
-
-  return await data;
+  const res = await fetch(url, { cache: "force-cache" });
+  const data = await res.json();
+  return data;
 };
 
 export { factory };
