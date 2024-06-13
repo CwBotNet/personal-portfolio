@@ -135,7 +135,7 @@ const ContactSection = () => {
 
 
                 <div id='contactsection' className='w-[80vw]'>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className='text-sm md:text-base'>
                         <Label>
                             Name
                         </Label>
@@ -165,7 +165,7 @@ const ContactSection = () => {
                     </form>
                 </div>
                 <div className="flex justify-center items-center tracking-wider">
-                    <h1 className=" text-md lg:text-3xl text-center">I&apos;m passionate about design and
+                    <h1 className="text-lg md:text-xl lg:text-2xl text-center">I&apos;m passionate about design and
                         <span className="text-orange-400">
                             {" "} I&apos;m always looking for new projects.{" "}
                         </span>

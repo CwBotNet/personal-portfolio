@@ -5,9 +5,10 @@ import React from 'react'
 type Props = {}
 
 const Navbar = (props: Props) => {
+    
     return (
         <>
-            <div className='hidden md:flex justify-between items-center p-3 w-full fixed top-0 z-50 bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 
+            <div className='hidden md:flex h-16 justify-around items-center p-3 w-full fixed top-0 z-50 bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 
 '>
                 <div className='flex items-center gap-x-2 tracking-wider'>
                     <Image src={'/image/avatar.png'} width={480} height={480} alt='Developer character' className='w-12 rounded-full' />

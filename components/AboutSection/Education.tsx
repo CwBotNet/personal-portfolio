@@ -23,11 +23,11 @@ const Education = async () => {
 
     return (
         <CardWrapper>
-            <div className='flex flex-col items-center tracking-wider'>
-                <span className='bg-gradient-to-t from-[#c7d2fe] to-[#8678f9] bg-clip-text text-xl text-transparent'>
+            <div className='flex flex-col items-center justify-center tracking-wider text-xl lg:text-4xl'>
+                <span className='capitalize bg-gradient-to-t from-[#c7d2fe] to-[#8678f9] bg-clip-text text-transparent'>
                     {data.education[0].Name}
                 </span>
-                <p>
+                <p className='text-base md:text-lg lg:text-xl text-center'>
                     {data.education[0].course}
                 </p>
             </div>

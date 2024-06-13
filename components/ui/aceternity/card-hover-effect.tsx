@@ -22,7 +22,7 @@ export const HoverEffect = ({
     return (
         <div
             className={cn(
-                "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10",
+                "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10 w-full",
                 className
             )}
         >
@@ -62,8 +62,8 @@ export const HoverEffect = ({
 
                         <div className="flex flex-wrap gap-1 pt-1">
                             {item.stack?.map((stack: any) => (
-                                <div key={stack.id} className={``}>
-                                    <span className='inline-flex cursor-pointer items-center justify-center rounded-full border border-gray-800 bg-gray-950 px-3 py-1 text-xs font-medium text-gray-300 backdrop-blur-3xl'>
+                                <div key={stack.id} className="flex justify-center items-center">
+                                    <span className='inline-flex flex-wrap cursor-pointer items-center justify-center rounded-full border border-gray-800 bg-gray-950 px-2 py-1 text-[0.6rem] sm:text-sm font-medium text-gray-300 backdrop-blur-3xl'>
                                         <span className='bg-gradient-to-t from-[#fff] to-[#8678f9] bg-clip-text text-transparent'>
                                             {stack.name}
                                         </span>

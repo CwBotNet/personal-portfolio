@@ -4,7 +4,6 @@ import { HoverEffect } from '../ui/aceternity/card-hover-effect';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-type Props = {}
 
 const ProjectTabs = ({
     handleTabClick,
@@ -50,12 +49,11 @@ const ProjectTabs = ({
     };
 
     return (
-        <div className='min-h-svh pt-24'>
+        <div className='min-h-svh pt-24 w-full'>
             <Tabs defaultValue='All'>
                 <div className='justify-center flex'>
                     <TabsList className=' '>
-                        <Slider {...settings} className='w-[60vw]' >
-
+                        <Slider {...settings} className='w-[60vw] '>
                             <TabsTrigger value='All' onClick={() => handleTabClick('All')}>All</TabsTrigger>
                             {[...uniqueTabs].map((tabName, idx) => (
                                 <TabsTrigger

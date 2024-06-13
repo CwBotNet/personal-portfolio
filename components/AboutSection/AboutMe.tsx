@@ -24,7 +24,7 @@ const AboutMe = async () => {
     // console.log(data.response[0].about)
     return (
         <CardWrapper>
-            <div className='flex justify-center items-center p-2 text-xs sm:text-sm md:text-lg'>
+            <div className='flex justify-center items-center p-2 text-xs sm:text-sm md:text-2xl'>
                 <h1 className='text-center tracking-widest'>
                     {data.response[0].about}
                 </h1>

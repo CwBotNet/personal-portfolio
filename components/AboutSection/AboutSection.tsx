@@ -35,8 +35,10 @@ const tabs = [
 
 const AboutSection = (props: Props) => {
     return (
-        <div id='about' className='min-h-svh p-8 pt-24'>
-            <Tabs tabs={tabs} containerClassName='justify-center text-[0.6rem] lg:text-[0.9rem] gap-4 w-full' tabClassName='flex justify-center item-center w-full ' />
+        <div id='about' className='min-h-svh'>
+            <div className=' w-full'>
+                <Tabs tabs={tabs} containerClassName='justify-center text-sm lg:text-base gap-4 w-full tracking-wider leading-normal' tabClassName='flex justify-center item-center w-full text-xs md:text-sm lg:text-base font-normal' />
+            </div>
         </div>
     )
 }

@@ -58,8 +58,8 @@ const SkillSection = async () => {
     content[1].description = data.response[0].skills.backend
     content[2].description = data.response[0].skills.fullStack
     return (
-        <div id='skill' className='min-h-svh  flex justify-center items-center'>
-            <StickyScroll content={content} contentClassName='' />
+        <div id='skill' className='min-h-svh flex justify-center items-center'>
+            <StickyScroll content={content} contentClassName='text-sm' />
         </div>
     )
 }

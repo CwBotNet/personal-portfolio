@@ -30,7 +30,7 @@ const Certification = async () => {
                     <div key={idx} className='flex gap-2 items-center'>
                         <Image src={item.logo} alt='' width={48} height={48} className='bg-white rounded-full w-8' />
                         <h1 className='text-sm md:text-md lg:text-3xl p-3' >
-                            <LinkPreview url={item.image}>
+                            <LinkPreview url={item.image} >
                                 <span className='bg-gradient-to-t from-[#c7d2fe] to-[#8678f9] bg-clip-text text-transparent'>
                                     {item.name}:{" "}
                                 </span>
