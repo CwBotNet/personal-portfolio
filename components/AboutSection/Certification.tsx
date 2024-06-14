@@ -8,7 +8,7 @@ type Props = {}
 async function getData() {
     try {
 
-        const res = await fetch(`${baseURL}/api/certification`, { cache: "force-cache" });
+        const res = await fetch(`${baseURL}/api/certification`, { cache: "no-cache" });
         if (!res.ok) {
             console.log("failed to fetch data")
         }

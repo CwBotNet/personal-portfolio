@@ -9,7 +9,7 @@ import { createFactory } from "hono/factory";
 
 const factory = createFactory();
 export const fetcher = async (url: string) => {
-  const res = await fetch(url, { cache: "force-cache" });
+  const res = await fetch(url, { cache: "no-cache" });
   const data = await res.json();
   return data;
 };
